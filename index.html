@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rahul Bagur</title>
+  <title>Rahul Bagur — Systems & Strategy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,49 +10,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="glow-container">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+  </div>
+
   <div class="container">
-    <header>
-      <div class="meta-info">2026 / Systems & Strategy</div>
+    <nav class="animate-in">
+      <div class="logo">RB</div>
+      <div class="nav-links">
+        <a href="index.html">Work</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero animate-in" style="animation-delay: 0.1s;">
+      <div class="badge">AVAILABLE FOR WORK</div>
       <h1>Rahul Bagur</h1>
-      <p class="hero-subtext">
-        Building high-impact automation and data workflows. Currently focused on GTM systems and AI-driven operations.
+      <p>
+        Building high-impact automation and data workflows. 
+        Focusing on GTM systems and AI-driven operations for modern enterprises.
       </p>
     </header>
 
-    <main>
-      <section class="project-list">
-        <div class="project-item" style="animation-delay: 0.1s;">
-          <div class="project-content">
-            <h2>Web Intelligence System</h2>
-            <p>Automated engine for ICP detection and lead routing architecture.</p>
-            <div class="project-links">
-              <a href="#" target="_blank">Live Output</a>
-              <a href="#" target="_blank">Source</a>
-            </div>
-          </div>
+    <main class="grid">
+      <div class="card full-width animate-in" style="animation-delay: 0.2s;">
+        <span class="card-tag">// FEATURED PROJECT</span>
+        <h2>Web Intelligence System</h2>
+        <p>
+          An automated engine designed for real-time ICP detection and lead routing architecture. 
+          Integrating website technology detection with live Google Sheets workflows.
+        </p>
+        <div style="display: flex; gap: 24px;">
+          <a href="#" class="card-link">Live Dashboard</a>
+          <a href="#" class="card-link">Source Code</a>
         </div>
+      </div>
 
-        <div class="project-item" style="animation-delay: 0.2s;">
-          <div class="project-content">
-            <h2>GTM Workflow Architecture</h2>
-            <p>Unified revenue operations flow mapping intent to conversion.</p>
-            <div class="project-links">
-              <a href="#" target="_blank">System Flowchart</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="card animate-in" style="animation-delay: 0.3s;">
+        <span class="card-tag">// SYSTEMS DESIGN</span>
+        <h2>GTM Architecture</h2>
+        <p>
+          Unified revenue operations flow mapping website intent to high-velocity conversion pipelines.
+        </p>
+        <a href="#" class="card-link">View Flowchart</a>
+      </div>
+
+      <div class="card animate-in" style="animation-delay: 0.4s;">
+        <span class="card-tag">// AUTOMATION</span>
+        <h2>AI SDR Agent</h2>
+        <p>
+          Personalized outreach automation utilizing GPT-4 for multi-channel engagement.
+        </p>
+        <a href="staging.html" class="card-link">Explore in Lab</a>
+      </div>
     </main>
 
-    <footer>
-      <div class="footer-grid">
-        <div class="footer-left">
-          <p>&copy; 2026 Rahul Bagur</p>
-        </div>
-        <div class="footer-right">
-          <a href="mailto:hello@rahulbagur.com">Contact</a>
-          <a href="#" target="_blank">LinkedIn</a>
-        </div>
+    <footer class="animate-in" style="animation-delay: 0.5s;">
+      <p>&copy; 2026 Rahul Bagur</p>
+      <div style="display: flex; gap: 24px;">
+        <a href="#" style="color: inherit; text-decoration: none;">Twitter</a>
+        <a href="#" style="color: inherit; text-decoration: none;">LinkedIn</a>
       </div>
     </footer>
   </div>

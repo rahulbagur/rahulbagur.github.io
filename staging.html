@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Staging Lab — Rahul Bagur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .staging-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #f59e0b;
+      color: #000;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .project-draft {
+      border-style: dashed;
+      border-color: #475569;
+      opacity: 0.8;
+    }
+    .back-link {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 40px;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Public Site</a>
+    <header>
+      <div class="staging-badge">Private Staging Area</div>
+      <h1>Project Laboratory</h1>
+      <p>
+        This is where I build and refine project modules before they go live on the main portfolio.
+      </p>
+    </header>
+
+    <main id="staging-area">
+      <!-- DRAFT PROJECTS GO HERE -->
+      <div class="card project-draft">
+        <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+        <h2>Upcoming Project: AI Data Pipeline</h2>
+        <p>
+          Description for a project currently in development. This will involve automated data extraction and ML-based classification.
+        </p>
+        <span class="button" style="background: #334155; cursor: not-allowed;">In Development</span>
+      </div>
+
+      <div class="card project-draft">
+        <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+        <h2>Upcoming Project: Revenue Ops Dashboard</h2>
+        <p>
+          Visualization of GTM metrics and funnel conversion rates using modern BI tools.
+        </p>
+        <span class="button" style="background: #334155; cursor: not-allowed;">In Development</span>
+      </div>
+    </main>
+
+    <footer>
+      <p>Drafts are only visible here. Use `git push` to sync changes.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

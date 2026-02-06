@@ -10,18 +10,18 @@ View the portfolio at: [https://rahulbagur.github.io](https://rahulbagur.github.
 - **Bento Grid Layout**: Information is organized into clean, rounded tiles for high readability and technical appeal.
 - **Dynamic Elements**: Smooth entry animations and responsive typography using modern CSS features like `clamp()`.
 
+## 📂 Site Structure
+- **Home (Landing Page)**: Centered high-impact overview of core mission and focus.
+- **Portfolio**: Archive of technical projects including Web Intelligence and GTM Architecture.
+- **About**: Background on professional mission, stack, and strategic interests.
+- **Contact**: Integrated contact form and social connection hub.
+- **Staging Lab**: A private R&D environment (accessible via `Shift + S`).
+
 ## 🛠️ Tech Stack
-- **Architecture**: Clean, semantic HTML5 and modern CSS3 (Custom Variables, Grid, Flexbox).
+- **Architecture**: Semantic HTML5 & Modern CSS3 (Grid, Flexbox, Root Variables).
+- **Optimization**: Root-relative asset paths for robust multi-page navigation.
 - **Typography**: Inter font family with high-contrast weights and gradient treatments.
 - **Interactions**: Vanilla JavaScript for micro-interactions and secure access logic.
-- **Responsiveness**: Fully optimized for all devices, from large desktops to mobile browsers.
-
-## 📂 Site Structure
-- **Home (Landing Page)**: High-impact overview of core focus areas.
-- **Portfolio**: Detailed archive of technical projects and systems design.
-- **About**: Background on mission, stack, and strategic focus.
-- **Contact**: Secure bridge for professional inquiries.
-- **Staging Lab**: A private environment for R&D (accessible via `Shift + S`).
 
 ## 🚀 Local Development
 1. Clone the repository:

@@ -7,142 +7,175 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <style>
-    /* Password Overlay */
+    /* Staging Specific Overrides */
+    .staging-badge {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #f59e0b;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .filter-bar {
+      margin: 40px 0;
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .filter-tag {
+      font-size: 0.875rem;
+      color: var(--fg-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .filter-tag:hover, .filter-tag.active {
+      color: var(--fg);
+    }
+
+    .staging-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background-color: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .project-draft {
+      background-color: var(--bg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
+    }
+
     #lock-screen {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: #0f172a;
+      background: var(--bg);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 9999;
     }
+
     #lock-screen input {
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-top: 20px;
+      padding: 12px 0;
+      font-size: 1.5rem;
+      margin-top: 40px;
       outline: none;
       text-align: center;
+      width: 300px;
+      font-family: var(--font-sans);
+      letter-spacing: 0.2em;
     }
-    #lock-screen input:focus { border-color: #60a5fa; }
 
-    /* Staging UI Enhancements */
-    .staging-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
+    #lock-screen input:focus {
+      border-bottom-color: var(--fg);
     }
-    .staging-badge {
+
+    .back-link {
       display: inline-block;
-      padding: 4px 12px;
-      background: #f59e0b;
-      color: #000;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      text-transform: uppercase;
+      margin-bottom: 40px;
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
     }
-    .filter-bar {
-      margin-top: 30px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .filter-tag {
-      padding: 6px 14px;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      color: #94a3b8;
-    }
-    .filter-tag.active {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
-    .hidden { display: none !important; }
-    
-    .project-draft {
-      margin-top: 0; /* Override style.css margin */
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+
+    .back-link:hover {
+      color: var(--fg);
     }
   </style>
 </head>
 <body class="hidden-content">
   <div id="lock-screen">
-    <h1>Restricted Access</h1>
-    <p>Enter passphrase to enter the laboratory</p>
-    <input type="password" id="passphrase" placeholder="••••••••">
+    <div class="meta-info">Security / Access Required</div>
+    <h1>Laboratory</h1>
+    <input type="password" id="passphrase" placeholder="PHRASE">
   </div>
 
+  <div class="reveal-overlay"></div>
+
   <div class="container">
-    <a href="index.html" class="back-link" style="color: #60a5fa; text-decoration: none; font-size: 0.9rem;">← Back to Public Site</a>
+    <a href="index.html" class="back-link">← Return to Index</a>
+    
     <header>
-      <div class="staging-badge">Private Staging Area</div>
-      <h1>Project Laboratory</h1>
-      <p>A sandbox for building and refining high-impact systems.</p>
+      <div class="meta-info">Private / Experimental</div>
+      <h1>Project Lab</h1>
+      <p class="hero-subtext">A sandbox for building and refining high-impact systems.</p>
       
       <div class="filter-bar">
-        <div class="filter-tag active" data-filter="all">All Projects</div>
+        <div class="filter-tag active" data-filter="all">All</div>
         <div class="filter-tag" data-filter="automation">Automation</div>
         <div class="filter-tag" data-filter="analytics">Analytics</div>
-        <div class="filter-tag" data-filter="web">Web Development</div>
+        <div class="filter-tag" data-filter="web">Web</div>
       </div>
     </header>
 
     <main class="staging-grid">
-      <!-- Automation -->
-      <div class="card project-draft" data-category="automation">
+      <div class="project-draft" data-category="automation">
         <div>
-          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <span class="staging-badge">Draft / 03</span>
           <h2>Gemini CLI Replica</h2>
-          <p>A headless automation tool using Selenium to interface with Gemini's web UI, enabling CLI-based LLM interactions.</p>
+          <p>Headless automation for Gemini LLM interactions via Selenium.</p>
         </div>
-        <a class="button" href="#" style="background: #334155; width: fit-content;">View Specs</a>
+        <div class="project-links">
+          <a href="#">Specs</a>
+        </div>
       </div>
 
-      <div class="card project-draft" data-category="automation">
+      <div class="project-draft" data-category="automation">
         <div>
-          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <span class="staging-badge">In Dev / 04</span>
           <h2>AI SDR Agent</h2>
-          <p>Automated LinkedIn & Email outreach system using GPT-4 for personalized messaging.</p>
+          <p>Personalized outreach automation using GPT-4 architecture.</p>
         </div>
-        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
+        <div class="project-links">
+          <span class="separator">Locked</span>
+        </div>
       </div>
 
-      <!-- Analytics -->
-      <div class="card project-draft" data-category="analytics">
+      <div class="project-draft" data-category="analytics">
         <div>
-          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <span class="staging-badge">In Dev / 05</span>
           <h2>Revenue Flow Viz</h2>
-          <p>D3.js visualization of multi-channel attribution and revenue leakage points.</p>
+          <p>Multi-channel attribution and leakage visualization.</p>
         </div>
-        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
+        <div class="project-links">
+          <span class="separator">Locked</span>
+        </div>
       </div>
 
-      <!-- Web -->
-      <div class="card project-draft" data-category="web">
+      <div class="project-draft" data-category="web">
         <div>
-          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
-          <h2>Next.js SaaS Template</h2>
-          <p>A modular boilerplate for internal tools with built-in Auth and DB connectors.</p>
+          <span class="staging-badge">Draft / 06</span>
+          <h2>Next.js SaaS</h2>
+          <p>Modular boilerplate for internal automation tools.</p>
         </div>
-        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
+        <div class="project-links">
+          <span class="separator">Locked</span>
+        </div>
       </div>
     </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-left">
+          <p>&copy; 2026 Rahul Bagur / Lab</p>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script src="script.js"></script>

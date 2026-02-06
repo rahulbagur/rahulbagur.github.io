@@ -223,6 +223,18 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
+  .container {
+    padding: 60px 20px;
+  }
+  nav {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
   .grid {
     grid-template-columns: 1fr;
   }
@@ -230,6 +242,19 @@ footer {
     grid-column: span 1;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 2.75rem;
+    line-height: 1.1;
+  }
+  .hero {
+    margin: 60px auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  .card {
+    padding: 24px;
   }
 }

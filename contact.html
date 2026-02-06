@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact — Rahul Bagur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .contact-form input, .contact-form textarea {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      color: white;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--accent);
+    }
+    .submit-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-container">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+  </div>
+
+  <div class="container">
+    <nav class="animate-in">
+      <div class="logo">RB</div>
+      <div class="nav-links">
+        <a href="index.html">Work</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero animate-in">
+      <div class="badge">GET IN TOUCH</div>
+      <h1>Contact</h1>
+      <p>
+        Interested in systems architecture or automation? Let's build something efficient together.
+      </p>
+    </header>
+
+    <main class="grid">
+      <div class="card animate-in" style="animation-delay: 0.1s;">
+        <span class="card-tag">// CONNECT</span>
+        <h2>Socials</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+          <a href="#" class="card-link">LinkedIn</a>
+          <a href="#" class="card-link">Twitter / X</a>
+          <a href="mailto:hello@rahulbagur.com" class="card-link">Email</a>
+        </div>
+      </div>
+
+      <div class="card animate-in" style="animation-delay: 0.2s;">
+        <span class="card-tag">// MESSAGE</span>
+        <form class="contact-form">
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Message" rows="4" required></textarea>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="animate-in" style="animation-delay: 0.3s;">
+      <p>&copy; 2026 Rahul Bagur</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -14,10 +14,11 @@
       flex-direction: column;
       gap: 16px;
       margin-top: 32px;
+      text-align: left;
     }
     .contact-form input, .contact-form textarea {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 16px;
       color: white;
@@ -26,10 +27,10 @@
       transition: border-color 0.2s;
     }
     .contact-form input:focus, .contact-form textarea:focus {
-      border-color: var(--accent);
+      border-color: #3b82f6;
     }
     .submit-btn {
-      background: var(--accent);
+      background: #3b82f6;
       color: white;
       border: none;
       padding: 16px;
@@ -53,17 +54,17 @@
     <nav class="animate-in">
       <div class="logo">RB</div>
       <div class="nav-links">
-        <a href="index.html">Work</a>
+        <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
     </nav>
 
-    <header class="hero animate-in">
+    <header class="hero animate-in" style="text-align: center; margin: 120px auto;">
       <div class="badge">GET IN TOUCH</div>
-      <h1>Contact</h1>
-      <p>
+      <h1 style="background: linear-gradient(to bottom, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 auto 40px;">Contact</h1>
+      <p style="margin: 0 auto; max-width: 600px;">
         Interested in systems architecture or automation? Let's build something efficient together.
       </p>
     </header>

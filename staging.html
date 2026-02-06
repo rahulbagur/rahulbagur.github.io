@@ -2,13 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Staging Lab — Rahul Bagur</title>
+  <title>Lab — Rahul Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    /* Password Overlay */
+    #lock-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #lock-screen input {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 20px;
+      outline: none;
+      text-align: center;
+    }
+    #lock-screen input:focus { border-color: #60a5fa; }
+
+    /* Staging UI Enhancements */
+    .staging-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
     .staging-badge {
       display: inline-block;
       padding: 4px 12px;
@@ -17,62 +48,94 @@
       border-radius: 9999px;
       font-size: 0.75rem;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
+    .filter-bar {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-tag {
+      padding: 6px 14px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+    .filter-tag.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+    .hidden { display: none !important; }
+    
     .project-draft {
-      border-style: dashed;
-      border-color: #475569;
-      opacity: 0.8;
-    }
-    .back-link {
-      color: #60a5fa;
-      text-decoration: none;
-      font-size: 0.9rem;
-      display: block;
-      margin-bottom: 40px;
-    }
-    .back-link:hover {
-      text-decoration: underline;
+      margin-top: 0; /* Override style.css margin */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   </style>
 </head>
-<body>
+<body class="hidden-content">
+  <div id="lock-screen">
+    <h1>Restricted Access</h1>
+    <p>Enter passphrase to enter the laboratory</p>
+    <input type="password" id="passphrase" placeholder="••••••••">
+  </div>
+
   <div class="container">
-    <a href="index.html" class="back-link">← Back to Public Site</a>
+    <a href="index.html" class="back-link" style="color: #60a5fa; text-decoration: none; font-size: 0.9rem;">← Back to Public Site</a>
     <header>
       <div class="staging-badge">Private Staging Area</div>
       <h1>Project Laboratory</h1>
-      <p>
-        This is where I build and refine project modules before they go live on the main portfolio.
-      </p>
+      <p>A sandbox for building and refining high-impact systems.</p>
+      
+      <div class="filter-bar">
+        <div class="filter-tag active" data-filter="all">All Projects</div>
+        <div class="filter-tag" data-filter="automation">Automation</div>
+        <div class="filter-tag" data-filter="analytics">Analytics</div>
+        <div class="filter-tag" data-filter="web">Web Development</div>
+      </div>
     </header>
 
-    <main id="staging-area">
-      <!-- DRAFT PROJECTS GO HERE -->
-      <div class="card project-draft">
-        <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
-        <h2>Upcoming Project: AI Data Pipeline</h2>
-        <p>
-          Description for a project currently in development. This will involve automated data extraction and ML-based classification.
-        </p>
-        <span class="button" style="background: #334155; cursor: not-allowed;">In Development</span>
+    <main class="staging-grid">
+      <!-- Automation -->
+      <div class="card project-draft" data-category="automation">
+        <div>
+          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <h2>AI SDR Agent</h2>
+          <p>Automated LinkedIn & Email outreach system using GPT-4 for personalized messaging.</p>
+        </div>
+        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
       </div>
 
-      <div class="card project-draft">
-        <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
-        <h2>Upcoming Project: Revenue Ops Dashboard</h2>
-        <p>
-          Visualization of GTM metrics and funnel conversion rates using modern BI tools.
-        </p>
-        <span class="button" style="background: #334155; cursor: not-allowed;">In Development</span>
+      <!-- Analytics -->
+      <div class="card project-draft" data-category="analytics">
+        <div>
+          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <h2>Revenue Flow Viz</h2>
+          <p>D3.js visualization of multi-channel attribution and revenue leakage points.</p>
+        </div>
+        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
+      </div>
+
+      <!-- Web -->
+      <div class="card project-draft" data-category="web">
+        <div>
+          <div class="staging-badge" style="background: #ef4444; color: #fff;">Draft</div>
+          <h2>Next.js SaaS Template</h2>
+          <p>A modular boilerplate for internal tools with built-in Auth and DB connectors.</p>
+        </div>
+        <span class="button" style="background: #334155; cursor: not-allowed; width: fit-content;">In Dev</span>
       </div>
     </main>
-
-    <footer>
-      <p>Drafts are only visible here. Use `git push` to sync changes.</p>
-    </footer>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

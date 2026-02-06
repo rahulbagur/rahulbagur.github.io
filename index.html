@@ -2,50 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rahul Bagur — Portfolio</title>
+  <title>Rahul Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="reveal-overlay"></div>
+  
   <div class="container">
     <header>
+      <div class="meta-info">2026 / Systems & Strategy</div>
       <h1>Rahul Bagur</h1>
-      <p>
-        Systems focused professional building automation, data workflows, and
-        technology driven business solutions across go to market, analytics, and operations.
+      <p class="hero-subtext">
+        Building high-impact automation and data workflows. Currently focused on GTM systems and AI-driven operations.
       </p>
     </header>
 
     <main>
-      <div class="card">
-        <h2>Web Intelligence System for SDR Outbound</h2>
-        <p>
-          Automated engine that detects website technologies, applies ICP rules,
-          and pushes outbound ready accounts into a live Google Sheets workflow
-          for sales and marketing teams.
-        </p>
-        <a class="button" href="#" target="_blank">View Live Output Sheet</a>
-        <a class="button" href="#" target="_blank">View GitHub Repo</a>
-      </div>
+      <section class="project-list">
+        <div class="project-item">
+          <div class="project-content">
+            <span class="project-num">01</span>
+            <h2>Web Intelligence System</h2>
+            <p>Automated engine for ICP detection and lead routing architecture.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Live Output</a>
+              <span class="separator">/</span>
+              <a href="#" target="_blank">Source</a>
+            </div>
+          </div>
+        </div>
 
-      <div class="card">
-        <h2>Inbound and Outbound GTM Workflow Architecture</h2>
-        <p>
-          End to end system design mapping website intent, lead routing,
-          enrichment, scoring, and outbound sequencing into a unified
-          revenue operations flow.
-        </p>
-        <a class="button" href="#" target="_blank">View System Flowchart</a>
-      </div>
+        <div class="project-item">
+          <div class="project-content">
+            <span class="project-num">02</span>
+            <h2>GTM Workflow Architecture</h2>
+            <p>Unified revenue operations flow mapping intent to conversion.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">System Flowchart</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-      <p>&copy; 2026 Rahul Bagur. All rights reserved.</p>
+      <div class="footer-grid">
+        <div class="footer-left">
+          <p>&copy; 2026 Rahul Bagur</p>
+        </div>
+        <div class="footer-right">
+          <a href="mailto:hello@rahulbagur.com">Contact</a>
+          <a href="#" target="_blank">LinkedIn</a>
+        </div>
+      </div>
     </footer>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

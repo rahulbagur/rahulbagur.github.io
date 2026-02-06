@@ -1,72 +1,187 @@
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #0f172a;
-  color: #e5e7eb;
+:root {
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --fg-muted: #888888;
+  --border: rgba(255, 255, 255, 0.1);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px;
+}
+
+/* Header */
+header {
+  margin-bottom: 160px;
+}
+
+.meta-info {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  margin-bottom: 32px;
 }
 
 h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #60a5fa, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin-bottom: 40px;
 }
 
-p {
-  color: #94a3b8;
-  font-size: 1.1rem;
+.hero-subtext {
+  font-size: 1.25rem;
+  max-width: 500px;
+  color: var(--fg-muted);
+  font-weight: 400;
 }
 
-.card {
-  background: #1e293b;
-  border-radius: 16px;
-  padding: 32px;
-  margin-top: 40px;
-  border: 1px solid #334155;
-  transition: transform 0.2s, border-color 0.2s;
+/* Projects */
+.project-list {
+  border-top: 1px solid var(--border);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #475569;
+.project-item {
+  border-bottom: 1px solid var(--border);
+  padding: 60px 0;
+  transition: opacity 0.3s ease;
 }
 
-.card h2 {
-  margin-top: 0;
-  color: #f8fafc;
+.project-item:hover {
+  opacity: 0.7;
 }
 
-.button {
-  display: inline-block;
-  margin-top: 16px;
-  margin-right: 12px;
-  padding: 12px 24px;
-  background: #2563eb;
-  color: white;
+.project-content {
+  display: grid;
+  grid-template-columns: 40px 1.5fr 2fr 1fr;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.project-num {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  font-family: monospace;
+}
+
+.project-item h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.project-item p {
+  color: var(--fg-muted);
+  font-size: 1rem;
+}
+
+.project-links {
+  text-align: right;
+  font-size: 0.875rem;
+}
+
+.project-links a {
+  color: var(--fg);
   text-decoration: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: background 0.2s;
+  transition: color 0.2s;
 }
 
-.button:hover {
-  background: #1d4ed8;
+.project-links a:hover {
+  text-decoration: underline;
 }
 
+.separator {
+  color: var(--border);
+  margin: 0 8px;
+}
+
+/* Footer */
 footer {
-  margin-top: 80px;
-  text-align: center;
-  color: #64748b;
-  font-size: 0.9rem;
+  margin-top: 160px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--fg-muted);
+}
+
+.footer-right {
+  display: flex;
+  gap: 32px;
+}
+
+.footer-right a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-right a:hover {
+  color: var(--fg);
+}
+
+/* Reveal Overlay Animation */
+.reveal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  z-index: 100;
+  pointer-events: none;
+  transform-origin: top;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+body.loaded .reveal-overlay {
+  transform: scaleY(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 24px;
+  }
+  
+  .project-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .project-links {
+    text-align: left;
+    margin-top: 8px;
+  }
+  
+  header {
+    margin-bottom: 80px;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+  }
 }

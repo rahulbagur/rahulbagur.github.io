@@ -4,77 +4,48 @@
   <meta charset="UTF-8" />
   <title>Rahul Bagur — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #cbd5f5;
-      line-height: 1.6;
-    }
-    .card {
-      background: #020617;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 30px;
-      border: 1px solid #1e293b;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 16px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    .button:hover {
-      background: #1d4ed8;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1>Rahul Bagur</h1>
-    <p>
-      Systems focused professional building automation, data workflows, and
-      technology driven business solutions across go to market, analytics, and operations.
-    </p>
-
-    <div class="card">
-      <h2>Web Intelligence System for SDR Outbound</h2>
+    <header>
+      <h1>Rahul Bagur</h1>
       <p>
-        Automated engine that detects website technologies, applies ICP rules,
-        and pushes outbound ready accounts into a live Google Sheets workflow
-        for sales and marketing teams.
+        Systems focused professional building automation, data workflows, and
+        technology driven business solutions across go to market, analytics, and operations.
       </p>
-      <a class="button" href="#" target="_blank">View Live Output Sheet</a>
-      <a class="button" href="#" target="_blank">View GitHub Repo</a>
-    </div>
+    </header>
 
-    <div class="card">
-      <h2>Inbound and Outbound GTM Workflow Architecture</h2>
-      <p>
-        End to end system design mapping website intent, lead routing,
-        enrichment, scoring, and outbound sequencing into a unified
-        revenue operations flow.
-      </p>
-      <a class="button" href="#" target="_blank">View System Flowchart</a>
-    </div>
+    <main>
+      <div class="card">
+        <h2>Web Intelligence System for SDR Outbound</h2>
+        <p>
+          Automated engine that detects website technologies, applies ICP rules,
+          and pushes outbound ready accounts into a live Google Sheets workflow
+          for sales and marketing teams.
+        </p>
+        <a class="button" href="#" target="_blank">View Live Output Sheet</a>
+        <a class="button" href="#" target="_blank">View GitHub Repo</a>
+      </div>
+
+      <div class="card">
+        <h2>Inbound and Outbound GTM Workflow Architecture</h2>
+        <p>
+          End to end system design mapping website intent, lead routing,
+          enrichment, scoring, and outbound sequencing into a unified
+          revenue operations flow.
+        </p>
+        <a class="button" href="#" target="_blank">View System Flowchart</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Rahul Bagur. All rights reserved.</p>
+    </footer>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

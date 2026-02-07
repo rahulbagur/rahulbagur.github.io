@@ -1,6 +1,5 @@
 :root {
   --bg: #000000;
-  --card-bg: #0a0a0a;
   --fg: #ffffff;
   --fg-muted: #88888b;
   --accent: #3b82f6;
@@ -20,7 +19,7 @@ html, body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  /* Phase 2: Smooth Inversion of Body Background */
+  /* Phase 2: Smooth background transition */
   transition: background-color 0.8s var(--bezier);
 }
 
@@ -28,26 +27,26 @@ html, body {
    INTRO ANIMATION STYLES
    ========================================= */
 
-/* Default State (Post-Intro) */
-body {
-  overflow-y: auto;
-}
-
-/* Phase 1: Identity State */
+/* Phase 1: Identity (Start) */
 body.intro-active {
   background-color: #ffffff !important;
-  overflow: hidden; /* Lock scroll */
+  color: #000000 !important;
+  overflow: hidden;
 }
 
 #intro-wrapper {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 10%; /* Left aligned massive negative space */
+  padding-left: 10vw; /* Massive negative space */
   pointer-events: none;
+  
   /* Phase 2 Transition properties */
   transition: transform 0.8s var(--bezier);
   transform-origin: top left;
@@ -58,99 +57,89 @@ body.intro-active {
   font-weight: 500;
   line-height: 1.1;
   display: block;
-  color: #000000; /* Phase 1 Color */
   opacity: 0;
   transform: translateY(40px);
-  /* Phase 2 Color Transition */
+  color: #000000; /* Start Black */
+  
+  /* Phase 2 Text Transitions */
   transition: color 0.8s var(--bezier), letter-spacing 0.8s var(--bezier);
 }
 
-/* Phase 1: Animations (Triggered by JS) */
-.intro-active .intro-line {
+/* Phase 1: Animate In (Triggered by JS) */
+body.intro-active .intro-line {
   animation: introReveal 0.8s var(--bezier) forwards;
 }
-.intro-active .intro-line:nth-child(1) { animation-delay: 0.2s; }
-.intro-active .intro-line:nth-child(2) { animation-delay: 0.5s; }
-.intro-active .intro-line:nth-child(3) { animation-delay: 0.8s; }
+body.intro-active .intro-line:nth-child(1) { animation-delay: 0.2s; }
+body.intro-active .intro-line:nth-child(2) { animation-delay: 0.5s; }
+body.intro-active .intro-line:nth-child(3) { animation-delay: 0.8s; }
 
 @keyframes introReveal {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Phase 2: Inversion State (Triggered by JS) */
+/* Phase 2: Inversion & Move (Triggered by JS) */
 body.intro-inverting {
   background-color: #000000 !important;
 }
 
 body.intro-inverting #intro-wrapper {
-  /* Move to top left (approximate position of logo) */
-  /* Calculate: Move -50% Y (center) to top (0) + 32px padding */
-  transform: translate(-5%, -45vh) scale(0.3); 
+  /* Scale down and move to top left position */
+  /* Adjust translate values to match your Nav Logo position */
+  transform: translate(24px, 36px) scale(0.18); 
 }
 
 body.intro-inverting .intro-line {
-  color: #ffffff; /* Invert Text */
+  color: #ffffff !important; /* Text Black -> White */
   letter-spacing: -0.05em; /* Tighten */
 }
 
-/* Phase 3: Hand-off / Hide Intro */
-body.intro-complete #intro-wrapper {
+/* Phase 3: Reveal (Hand-off) */
+/* Hide the intro wrapper once the real logo fades in */
+body.intro-reveal #intro-wrapper {
   opacity: 0;
-  pointer-events: none;
   transition: opacity 0.5s ease;
 }
 
-/* MAIN CONTENT VISIBILITY */
+/* Elements hidden initially */
 .main-content, nav, #ambient-mesh {
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1.2s ease 0.2s; /* Slight stagger */
 }
 
-/* Phase 3: Reveal Content */
+/* Reveal Main Content */
 body.intro-reveal .main-content,
 body.intro-reveal nav,
 body.intro-reveal #ambient-mesh {
   opacity: 1;
 }
 
-/* Skip Intro State (Immediate Load) */
+/* SKIP INTRO STATE (Returning User) */
+body.intro-skipped {
+  background-color: #000000;
+  color: #ffffff;
+}
+body.intro-skipped #intro-wrapper { display: none; }
 body.intro-skipped .main-content,
 body.intro-skipped nav,
 body.intro-skipped #ambient-mesh {
   opacity: 1;
   transition: none;
 }
-body.intro-skipped #intro-wrapper {
-  display: none;
-}
+
 
 /* =========================================
-   STANDARD SITE STYLES
+   STANDARD SITE STYLES (Preserved)
    ========================================= */
 
 body::-webkit-scrollbar { display: none; }
 html::-webkit-scrollbar { display: none; }
 
 /* Ambient Mesh */
-#ambient-mesh {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-}
+#ambient-mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .blob { position: absolute; border-radius: 50%; filter: blur(100px); }
-.blob-1 {
-  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
-  width: 700px; height: 700px; top: -10%; left: -10%;
-  animation: drift1 45s ease-in-out infinite alternate;
-}
-.blob-2 {
-  background: radial-gradient(circle, rgba(120,120,120,0.06) 0%, transparent 70%);
-  width: 800px; height: 800px; top: 20%; right: -10%;
-  animation: drift2 55s ease-in-out infinite alternate;
-}
-.blob-3 {
-  background: radial-gradient(circle, rgba(80,100,255,0.05) 0%, transparent 70%);
-  width: 600px; height: 600px; bottom: -10%; left: 20%;
-  animation: drift3 60s ease-in-out infinite alternate;
-}
+.blob-1 { background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); width: 700px; height: 700px; top: -10%; left: -10%; animation: drift1 45s ease-in-out infinite alternate; }
+.blob-2 { background: radial-gradient(circle, rgba(120,120,120,0.06) 0%, transparent 70%); width: 800px; height: 800px; top: 20%; right: -10%; animation: drift2 55s ease-in-out infinite alternate; }
+.blob-3 { background: radial-gradient(circle, rgba(80,100,255,0.05) 0%, transparent 70%); width: 600px; height: 600px; bottom: -10%; left: 20%; animation: drift3 60s ease-in-out infinite alternate; }
 @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,80px) scale(1.1); } }
 @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-60px,40px) scale(0.95); } }
 @keyframes drift3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-50px) scale(1.05); } }

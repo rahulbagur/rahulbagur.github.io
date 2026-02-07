@@ -48,13 +48,13 @@ html::-webkit-scrollbar { display: none; }
   align-items: center;
   padding-left: 10%;
   pointer-events: none;
-  background: #ffffff;
-  transition: opacity 0.8s ease;
+  background: transparent; /* Let body background show through */
 }
 
 .intro-text {
   display: flex;
   flex-direction: column;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
 .intro-line {
@@ -63,7 +63,13 @@ html::-webkit-scrollbar { display: none; }
   line-height: 1.1;
   opacity: 0;
   transform: translateY(40px);
-  color: #000000;
+  color: inherit; /* Follows body color transition */
+}
+
+/* Phase 2: Inversion & Shrink */
+body:not(.loading) .intro-text {
+  transform: scale(0.2) translate(-20vw, -40vh); /* Shrink and move towards top-left */
+  opacity: 0; /* Fade out as it reaches position */
 }
 
 .intro-active .intro-line {
@@ -75,12 +81,14 @@ html::-webkit-scrollbar { display: none; }
 .intro-active .intro-line:nth-child(3) { animation-delay: 0.8s; }
 
 @keyframes introReveal {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body.intro-complete #intro-overlay { 
-  opacity: 0;
-  pointer-events: none;
+  display: none !important;
 }
 
 /* Ambient Mesh */
@@ -136,12 +144,12 @@ body.intro-complete #ambient-mesh { opacity: 1; }
 }
 
 .main-content {
-  opacity: 1; /* Visible by default */
+  opacity: 1;
   transition: opacity 0.8s ease;
 }
 
 body.loading .main-content {
-  opacity: 0; /* Hidden only during load */
+  opacity: 0;
 }
 
 /* Noise Overlay */

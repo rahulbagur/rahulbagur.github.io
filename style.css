@@ -23,7 +23,7 @@ html, body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  height: 100%; /* Force full height */
+  height: 100%;
   /* Hide scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -48,7 +48,7 @@ html::-webkit-scrollbar { display: none; }
   align-items: center;
   padding-left: 10%;
   pointer-events: none;
-  background: #ffffff; /* Absolute solid white */
+  background: #ffffff;
 }
 
 .intro-text {
@@ -126,6 +126,9 @@ body.intro-complete #ambient-mesh { opacity: 1; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 140px 24px 60px;
+  min-height: 100vh; /* Force container to be at least full height */
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
@@ -293,7 +296,7 @@ h1 {
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 footer {
-  margin-top: 80px;
+  margin-top: auto; /* Push to bottom of flex container */
   padding-bottom: 40px;
   border-top: 1px solid var(--border);
   padding-top: 40px;

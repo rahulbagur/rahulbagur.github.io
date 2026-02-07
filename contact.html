@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Contact — Rahul Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     .contact-form {
       display: flex;
@@ -17,26 +17,26 @@
       text-align: left;
     }
     .contact-form input, .contact-form textarea {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
       padding: 16px;
       color: white;
-      font-family: var(--font-sans);
+      font-family: var(--font-mono);
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
     .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #3b82f6;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
     }
     .submit-btn {
-      background: #3b82f6;
-      color: white;
+      background: var(--fg);
+      color: var(--bg);
       border: none;
       padding: 16px;
-      border-radius: 12px;
-      font-weight: 700;
+      font-weight: 500;
       cursor: pointer;
+      font-family: var(--font-mono);
       transition: opacity 0.2s;
     }
     .submit-btn:hover {
@@ -45,56 +45,53 @@
   </style>
 </head>
 <body>
-  <div class="glow-container">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-  </div>
+  <div class="spotlight" id="spotlight"></div>
 
   <div class="container">
-    <nav class="animate-in">
+    <nav class="reveal">
       <div class="logo">RB</div>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="magnetic">Home</a>
+        <a href="portfolio.html" class="magnetic">Portfolio</a>
+        <a href="about.html" class="magnetic">About</a>
+        <a href="contact.html" class="magnetic">Contact</a>
       </div>
     </nav>
 
-    <header class="hero animate-in" style="text-align: center; margin: 120px auto;">
-      <div class="badge">GET IN TOUCH</div>
-      <h1 style="background: linear-gradient(to bottom, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 auto 40px;">Contact</h1>
-      <p style="margin: 0 auto; max-width: 600px;">
+    <header class="hero reveal" style="animation-delay: 0.1s;">
+      <div class="badge shimmer">GET IN TOUCH</div>
+      <h1>Contact</h1>
+      <p>
         Interested in systems architecture or automation? Let's build something efficient together.
       </p>
     </header>
 
     <main class="grid">
-      <div class="card animate-in" style="animation-delay: 0.1s;">
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">// CONNECT</span>
         <h2>Socials</h2>
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
-          <a href="#" class="card-link">LinkedIn</a>
-          <a href="#" class="card-link">Twitter / X</a>
-          <a href="mailto:hello@rahulbagur.com" class="card-link">Email</a>
+          <a href="#" class="magnetic card-link" style="color: #fff; text-decoration: none;">LinkedIn</a>
+          <a href="#" class="magnetic card-link" style="color: #fff; text-decoration: none;">Twitter / X</a>
+          <a href="mailto:hello@rahulbagur.com" class="magnetic card-link" style="color: #fff; text-decoration: none;">Email</a>
         </div>
       </div>
 
-      <div class="card animate-in" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.3s;">
         <span class="card-tag">// MESSAGE</span>
         <form class="contact-form">
           <input type="text" placeholder="Name" required>
           <input type="email" placeholder="Email" required>
           <textarea placeholder="Message" rows="4" required></textarea>
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn magnetic">Send Message</button>
         </form>
       </div>
     </main>
 
-    <footer class="animate-in" style="animation-delay: 0.3s;">
+    <footer class="reveal" style="animation-delay: 0.4s;">
       <p>&copy; 2026 Rahul Bagur</p>
     </footer>
   </div>
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

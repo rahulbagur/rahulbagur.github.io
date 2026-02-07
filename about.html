@@ -4,38 +4,35 @@
   <meta charset="UTF-8" />
   <title>About — Rahul Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="glow-container">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-  </div>
+  <div class="spotlight" id="spotlight"></div>
 
   <div class="container">
-    <nav class="animate-in">
+    <nav class="reveal">
       <div class="logo">RB</div>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="magnetic">Home</a>
+        <a href="portfolio.html" class="magnetic">Portfolio</a>
+        <a href="about.html" class="magnetic">About</a>
+        <a href="contact.html" class="magnetic">Contact</a>
       </div>
     </nav>
 
-    <header class="hero animate-in" style="text-align: center; margin: 120px auto;">
-      <div class="badge">MY STORY</div>
-      <h1 style="background: linear-gradient(to bottom, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 auto 40px;">About Me</h1>
-      <p style="margin: 0 auto; max-width: 600px;">
+    <header class="hero reveal" style="animation-delay: 0.1s;">
+      <div class="badge shimmer">MY STORY</div>
+      <h1>About Me</h1>
+      <p>
         Systems architect and automation specialist dedicated to building the future of efficient business operations.
       </p>
     </header>
 
     <main class="grid">
-      <div class="card full-width animate-in" style="animation-delay: 0.1s;">
+      <div class="card full-width reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">// BACKGROUND</span>
         <h2>The Mission</h2>
         <p>
@@ -43,7 +40,7 @@
         </p>
       </div>
 
-      <div class="card animate-in" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.3s;">
         <span class="card-tag">// CORE SKILLS</span>
         <h2>Technical Stack</h2>
         <p>
@@ -51,7 +48,7 @@
         </p>
       </div>
 
-      <div class="card animate-in" style="animation-delay: 0.3s;">
+      <div class="card reveal" style="animation-delay: 0.4s;">
         <span class="card-tag">// FOCUS</span>
         <h2>Current Interests</h2>
         <p>
@@ -60,10 +57,10 @@
       </div>
     </main>
 
-    <footer class="animate-in" style="animation-delay: 0.4s;">
+    <footer class="reveal" style="animation-delay: 0.5s;">
       <p>&copy; 2026 Rahul Bagur</p>
     </footer>
   </div>
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Spotlight Effect
+    const spotlight = document.getElementById("spotlight");
+    if (spotlight) {
+        document.addEventListener("mousemove", e => {
+            spotlight.style.left = e.clientX + "px";
+            spotlight.style.top = e.clientY + "px";
+        });
+    }
+
+    // Dynamic Card Glow Border
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("mousemove", e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--x", x + "px");
+            card.style.setProperty("--y", y + "px");
+        });
+    });
+
+    // Magnetic Buttons/Links
+    document.querySelectorAll(".magnetic").forEach(btn => {
+        btn.addEventListener("mousemove", e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "translate(0,0)";
+        });
+    });
+
     // Secret shortcut to Staging Page (Shift + S)
     document.addEventListener('keydown', (e) => {
         if (e.shiftKey && e.key === 'S') {
@@ -14,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (passInput) {
             passInput.addEventListener('input', (e) => {
                 if (e.target.value.toLowerCase() === 'admin') {
-                    lockScreen.style.display = 'none';
+                    if (lockScreen) lockScreen.style.display = 'none';
                     localStorage.setItem('lab_access', 'true');
                 }
             });
@@ -25,3 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+

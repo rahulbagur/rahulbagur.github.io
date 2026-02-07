@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Lab — Rahul Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     #lock-screen {
       position: fixed;
@@ -24,12 +24,12 @@
       border: 1px solid var(--border);
       color: white;
       padding: 16px 24px;
-      border-radius: 12px;
       font-size: 1rem;
       margin-top: 24px;
       outline: none;
       text-align: center;
       width: 280px;
+      font-family: var(--font-mono);
     }
     #lock-screen input:focus { border-color: var(--accent); }
   </style>
@@ -41,40 +41,37 @@
     <input type="password" id="passphrase" placeholder="PHRASE">
   </div>
 
-  <div class="glow-container">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-  </div>
+  <div class="spotlight" id="spotlight"></div>
 
   <div class="container">
-    <nav class="animate-in">
-      <a href="index.html" style="color: var(--fg-muted); text-decoration: none; font-size: 0.875rem;">← Back to Public</a>
+    <nav class="reveal">
+      <a href="index.html" class="magnetic" style="color: var(--fg-muted); text-decoration: none; font-size: 0.875rem;">← Back to Public</a>
       <div class="logo">LAB</div>
     </nav>
 
-    <header class="hero animate-in">
-      <div class="badge" style="color: #f59e0b;">PRIVATE STAGING</div>
+    <header class="hero reveal" style="animation-delay: 0.1s;">
+      <div class="badge shimmer" style="color: #f59e0b;">PRIVATE STAGING</div>
       <h1>Research & Development</h1>
       <p>Experimental systems, automated workflows, and architectural drafts.</p>
     </header>
 
     <main class="grid">
-      <div class="card animate-in" style="animation-delay: 0.1s;">
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">DRAFT / 01</span>
         <h2>Gemini CLI Replica</h2>
         <p>Headless automation for Gemini LLM interactions via Selenium.</p>
-        <span class="card-link" style="opacity: 0.5; cursor: not-allowed;">Locked</span>
+        <span class="card-link" style="opacity: 0.5; cursor: not-allowed; display: inline-block; margin-top: 24px;">Locked</span>
       </div>
 
-      <div class="card animate-in" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.3s;">
         <span class="card-tag">DRAFT / 02</span>
         <h2>Revenue Flow Viz</h2>
         <p>Multi-channel attribution and leakage visualization using D3.js.</p>
-        <span class="card-link" style="opacity: 0.5; cursor: not-allowed;">Locked</span>
+        <span class="card-link" style="opacity: 0.5; cursor: not-allowed; display: inline-block; margin-top: 24px;">Locked</span>
       </div>
     </main>
   </div>
 
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

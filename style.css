@@ -21,7 +21,12 @@ body {
 body::-webkit-scrollbar { display: none; }
 html::-webkit-scrollbar { display: none; }
 
-/* ===== NAVIGATION ===== */
+/* ===== HEADERS & NAVIGATION ===== */
+.static-header {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
 nav {
   position: fixed;
   top: 32px;
@@ -71,15 +76,20 @@ nav {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 24px 60px;
+  padding: 80px 24px 60px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* Specific padding for pages WITH fixed nav */
+body:not(.home) .container {
+  padding-top: 140px;
+}
+
 .hero {
   position: relative;
-  margin-top: 5vh;
+  margin-top: 10vh;
   max-width: 800px;
 }
 
@@ -111,7 +121,7 @@ nav {
   background: #ccc;
 }
 
-/* ===== BENTO GRID (FOR SUBPAGES) ===== */
+/* ===== BENTO GRID ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

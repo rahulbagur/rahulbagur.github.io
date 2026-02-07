@@ -6,30 +6,21 @@
 <title>Rahul Mahendra Bagur — Revenue Systems Architect</title>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.2.5">
+<link rel="stylesheet" href="style.css?v=1.3.0">
 
 </head>
 
-<body>
+<body class="dark">
 
-<!-- 1. Ambient Background -->
 <div class="mesh">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 </div>
 
-<!-- 2. Intro Text / Logo -->
-<div class="intro-name" id="intro-text">
-  <div>Rahul</div>
-  <div>Mahendra</div>
-  <div>Bagur</div>
-</div>
-
-<!-- 3. Navigation -->
 <nav>
   <div class="nav-bar">
-    <div class="real-logo"></div> <!-- Empty, intro text takes this spot -->
+    <div class="logo">Rahul Mahendra Bagur</div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="portfolio.html">Portfolio</a>
@@ -39,57 +30,25 @@
   </div>
 </nav>
 
-<!-- 4. Hero Content -->
-<div class="hero">
-  <h1>Architecting the future of revenue operations.</h1>
-  <p>High performance automation, data workflows, and GTM strategy designed for technical excellence and measurable business impact.</p>
-  <div class="buttons">
-    <a href="portfolio.html">View Projects</a>
-  </div>
+<div class="container main-content">
+  <header class="hero">
+    <h1>Architecting the future of revenue operations.</h1>
+    <p>High performance automation, data workflows, and GTM strategy designed for technical excellence and measurable business impact.</p>
+    <div class="buttons">
+      <a href="portfolio.html">View Projects</a>
+    </div>
+  </header>
+
+  <footer>
+    <p>&copy; 2026 Rahul Mahendra Bagur</p>
+    <div style="display: flex; gap: 24px;">
+      <a href="https://www.linkedin.com/in/rahulbagur" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/rahulbagur" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </footer>
 </div>
 
-<!-- 5. Footer -->
-<footer>
-  <p>&copy; 2026 Rahul Mahendra Bagur</p>
-  <div style="display: flex; gap: 24px;">
-    <a href="https://www.linkedin.com/in/rahulbagur" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="https://github.com/rahulbagur" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const introPlayed = localStorage.getItem('introPlayed');
-  
-  if (!introPlayed) {
-    // === FIRST VISIT SEQUENCE ===
-    
-    // Wait for text reveal (0.8s) + Hold (0.8s) + Inversion start
-    // Text animations are CSS keyframes starting immediately on load
-    
-    setTimeout(() => {
-      // Trigger Phase 2: Inversion (White -> Black) & Move
-      document.body.classList.add("dark");
-      
-      // Save session
-      localStorage.setItem('introPlayed', 'true');
-      
-    }, 2200); // 0.2 + 0.5 + 0.8 reveal + 0.7 hold
-    
-  } else {
-    // === RETURN VISIT (SKIP) ===
-    document.body.classList.add("dark");
-    
-    // Ensure transitions don't flash
-    const introText = document.getElementById('intro-text');
-    if(introText) {
-       // Force final state immediately
-       introText.style.transition = 'none';
-       // We rely on CSS to position it correctly in .dark mode
-    }
-  }
-});
-</script>
+<script src="script.js?v=1.3.0"></script>
 
 </body>
 </html>

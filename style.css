@@ -4,88 +4,83 @@
   --bg: #000000;
   --fg: #ffffff;
   --fg-muted: #88888b;
+  --accent: #3b82f6;
   --font-mono: 'IBM Plex Mono', monospace;
 }
 
 body {
   font-family: var(--font-mono);
-  background: #ffffff; /* Start White */
-  color: #000000;      /* Start Black */
-  overflow: hidden;
-  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-/* ===== INTRO NAME (The Identity) ===== */
-.intro-name {
+body::-webkit-scrollbar { display: none; }
+html::-webkit-scrollbar { display: none; }
+
+/* ===== NAVIGATION ===== */
+nav {
   position: fixed;
-  left: 8%;
-  top: 35%;
-  font-size: clamp(3rem, 8vw, 64px);
+  top: 32px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.nav-bar {
+  width: calc(100% - 48px);
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: rgba(10, 10, 10, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 100px;
+}
+
+.logo {
   font-weight: 500;
-  line-height: 1.1;
-  z-index: 2000; /* Above everything */
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 0.85rem;
+}
+
+.nav-links a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--fg); }
+
+/* ===== LAYOUT & HERO ===== */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 24px 60px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  pointer-events: none;
 }
 
-.intro-name div {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: reveal 0.6s forwards;
-}
-
-.intro-name div:nth-child(1) { animation-delay: 0.2s; }
-.intro-name div:nth-child(2) { animation-delay: 0.5s; }
-.intro-name div:nth-child(3) { animation-delay: 0.8s; }
-
-@keyframes reveal {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== PHASE 2: INVERSION & MOVE ===== */
-body.dark {
-  background: #000000;
-  color: #ffffff;
-  overflow-y: auto;
-}
-
-/* Move Name to Top Left (Logo Position) */
-body.dark .intro-name {
-  top: 28px;       /* Vertically centers in the 60px height nav bar */
-  left: 50%;       /* Center horizontally first */
-  transform: translateX(calc(-50% - 1px)); /* Adjust specifically to match nav container */
-  width: calc(100% - 48px); /* Match nav width */
-  max-width: 1200px;
-  font-size: 1rem; /* Shrink font */
-  flex-direction: row; /* Stack horizontally */
-  gap: 0.4em; /* Tighten spacing */
-  padding-left: 24px; /* Align text inside the visual container */
-}
-
-/* ===== HERO & CONTENT (Reveals Phase 3) ===== */
-.hero, .main-content, footer {
-  opacity: 0;
-  transition: opacity 1s ease 0.5s; /* Wait for inversion to finish */
-}
-
-body.dark .hero, 
-body.dark .main-content,
-body.dark footer {
-  opacity: 1;
-}
-
-/* Hero Positioning */
 .hero {
   position: relative;
-  margin-top: 25vh;
-  margin-left: 8%;
+  margin-top: 5vh;
   max-width: 800px;
-  z-index: 2;
 }
 
 .hero h1 {
@@ -97,7 +92,7 @@ body.dark footer {
 
 .hero p {
   font-size: 1.125rem;
-  color: #888;
+  color: var(--fg-muted);
   margin-bottom: 48px;
   max-width: 650px;
 }
@@ -112,76 +107,67 @@ body.dark footer {
   transition: 0.3s ease;
 }
 
-/* ===== NAV BAR (Background) ===== */
-nav {
-  position: fixed;
-  top: 32px;
-  left: 0;
-  width: 100%;
+.buttons a:hover {
+  background: #ccc;
+}
+
+/* ===== BENTO GRID (FOR SUBPAGES) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  background: #0a0a0a;
+  border: 1px solid #111111;
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 1s ease 0.5s;
+  flex-direction: column;
 }
 
-body.dark nav {
-  opacity: 1;
-}
+.card.full-width { grid-column: span 3; padding: 30px 40px; }
 
-.nav-bar {
-  width: calc(100% - 48px);
-  max-width: 1200px;
-  display: flex;
-  justify-content: flex-end; /* Push links to right, Logo is fake */
-  align-items: center;
-  padding: 12px 24px;
-  background: rgba(10, 10, 10, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 100px;
-}
+.card-tag { font-size: 0.75rem; color: var(--accent); margin-bottom: 16px; display: block; opacity: 0.8; }
+.card h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 16px; }
+.card p { color: var(--fg-muted); font-size: 0.95rem; line-height: 1.6; }
 
-/* Real logo hidden, we use intro text as logo */
-.real-logo {
-  display: none; 
+/* Card Glow Effect */
+.card::before {
+  content: ""; position: absolute; inset: 0; padding: 1px;
+  background: radial-gradient(600px circle at var(--x) var(--y), rgba(255,255,255,0.35), transparent 40%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; opacity: 0; transition: opacity 0.3s ease;
 }
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  font-size: 0.85rem;
-}
-
-.nav-links a {
-  color: #888;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: #fff; }
+.card:hover::before { opacity: 1; }
 
 /* ===== FOOTER ===== */
 footer {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 1200px;
+  margin-top: auto;
+  padding-bottom: 40px;
+  border-top: 1px solid #111111;
+  padding-top: 40px;
   display: flex;
   justify-content: space-between;
-  color: #888;
+  align-items: center;
+  color: var(--fg-muted);
   font-size: 0.875rem;
-  z-index: 10;
 }
+
+footer a { color: inherit; text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: #fff; }
 
 /* ===== AMBIENT MESH ===== */
 .mesh {
   position: fixed; inset: 0; z-index: 0;
-  opacity: 0; transition: opacity 2s ease; pointer-events: none;
+  pointer-events: none;
 }
-body.dark .mesh { opacity: 1; }
-
 .blob { position: absolute; border-radius: 50%; filter: blur(100px); }
 .blob1 { background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); width: 700px; height: 700px; top: -10%; left: -10%; animation: drift1 45s infinite alternate; }
 .blob2 { background: radial-gradient(circle, rgba(120,120,120,0.06) 0%, transparent 70%); width: 800px; height: 800px; top: 20%; right: -10%; animation: drift2 55s infinite alternate; }
@@ -192,17 +178,34 @@ body.dark .mesh { opacity: 1; }
 @keyframes drift3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-50px) scale(1.05); } }
 
 /* Noise */
-body.dark::before {
+body::before {
   content: ""; position: fixed; inset: 0;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   opacity: 0.02; pointer-events: none; z-index: 1000;
 }
 
+/* Spotlight */
+.spotlight {
+  position: fixed; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  transform: translate(-50%, -50%); pointer-events: none; z-index: 0;
+}
+
+/* Animations */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
 /* Responsive */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+  .card.full-width { grid-column: span 1; }
+}
 @media (max-width: 768px) {
-  body.dark .intro-name { left: 24px; top: 28px; width: auto; transform: none; padding: 0; }
   .nav-bar { width: calc(100% - 32px); padding: 12px 20px; }
   nav { top: 16px; }
-  .hero { margin-left: 24px; margin-right: 24px; }
-  footer { width: calc(100% - 32px); bottom: 20px; flex-direction: column; align-items: center; gap: 16px; }
+  .hero { margin-top: 20px; }
+  footer { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 }

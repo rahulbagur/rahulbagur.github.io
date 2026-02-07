@@ -98,8 +98,6 @@ body.intro-complete .main-content {
   opacity: 1;
 }
 
-/* Rest of styles... */
-
 /* Noise */
 body::before {
   content: "";
@@ -127,7 +125,7 @@ body::before {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 40px 24px;
 }
 
 /* Navigation */
@@ -135,7 +133,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .logo {
@@ -162,7 +160,7 @@ nav {
 
 /* Hero */
 .hero {
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 
 h1 {
@@ -170,7 +168,7 @@ h1 {
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.1;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .hero p {
@@ -322,7 +320,7 @@ h1 {
 }
 
 footer {
-  margin-top: 120px;
+  margin-top: 80px;
   padding-bottom: 40px;
   border-top: 1px solid var(--border);
   padding-top: 40px;

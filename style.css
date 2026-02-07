@@ -117,7 +117,7 @@ h1 {
 /* Bento Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -130,39 +130,13 @@ h1 {
   padding: 40px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Dynamic glow border */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: radial-gradient(600px circle at var(--x) var(--y),
-      rgba(255,255,255,0.35),
-      transparent 40%);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #222222;
-  box-shadow: 0 0 60px rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
 }
 
 .card.full-width {
-  grid-column: span 2;
+  grid-column: span 3;
+  padding: 30px 40px; /* Slightly shorter height for wide cards */
 }
 
 .card-tag {

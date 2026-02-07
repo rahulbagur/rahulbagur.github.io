@@ -6,39 +6,40 @@
 <title>Rahul Mahendra Bagur — Revenue Systems Architect</title>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.2.4">
+<link rel="stylesheet" href="style.css?v=1.2.5">
 
 </head>
 
 <body>
 
-<!-- 1. Ambient Background (Visible after inversion) -->
+<!-- 1. Ambient Background -->
 <div class="mesh">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 </div>
 
-<!-- 2. Intro Text (Animates in, then fades out/moves) -->
+<!-- 2. Intro Text / Logo -->
 <div class="intro-name" id="intro-text">
   <div>Rahul</div>
   <div>Mahendra</div>
   <div>Bagur</div>
 </div>
 
-<!-- 3. Navigation (Fades in after inversion) -->
+<!-- 3. Navigation -->
 <nav>
   <div class="nav-bar">
-    <div class="logo">Rahul Mahendra Bagur</div>
+    <div class="real-logo"></div> <!-- Empty, intro text takes this spot -->
     <div class="nav-links">
-      <a href="index.html" class="magnetic">Home</a>
-      <a href="portfolio.html" class="magnetic">Portfolio</a>
-      <a href="about.html" class="magnetic">About</a>
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- 4. Main Hero Content (Fades in after inversion) -->
+<!-- 4. Hero Content -->
 <div class="hero">
   <h1>Architecting the future of revenue operations.</h1>
   <p>High performance automation, data workflows, and GTM strategy designed for technical excellence and measurable business impact.</p>
@@ -47,7 +48,7 @@
   </div>
 </div>
 
-<!-- 5. Footer (Fades in after inversion) -->
+<!-- 5. Footer -->
 <footer>
   <p>&copy; 2026 Rahul Mahendra Bagur</p>
   <div style="display: flex; gap: 24px;">
@@ -67,27 +68,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Text animations are CSS keyframes starting immediately on load
     
     setTimeout(() => {
-      // Trigger Phase 2: Inversion (White -> Black)
+      // Trigger Phase 2: Inversion (White -> Black) & Move
       document.body.classList.add("dark");
       
-      // Save session so next time it skips
+      // Save session
       localStorage.setItem('introPlayed', 'true');
       
-    }, 2200); // 0.2 + 0.5 + 0.8 reveal + 0.8 hold = ~2.3s timing
+    }, 2200); // 0.2 + 0.5 + 0.8 reveal + 0.7 hold
     
   } else {
     // === RETURN VISIT (SKIP) ===
-    // Immediately apply dark mode and show content
     document.body.classList.add("dark");
-    // Disable intro text animation by hiding it immediately
-    const introText = document.getElementById('intro-text');
-    if(introText) introText.style.display = 'none';
     
     // Ensure transitions don't flash
-    document.body.style.transition = 'none';
-    setTimeout(() => {
-        document.body.style.transition = '';
-    }, 100);
+    const introText = document.getElementById('intro-text');
+    if(introText) {
+       // Force final state immediately
+       introText.style.transition = 'none';
+       // We rely on CSS to position it correctly in .dark mode
+    }
   }
 });
 </script>

@@ -1,4 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if intro has already been played
+    const introPlayed = localStorage.getItem('introPlayed');
+    const body = document.body;
+    const introOverlay = document.getElementById('intro-overlay');
+
+    if (!introPlayed && introOverlay) {
+        // Run Animation
+        setTimeout(() => {
+            body.classList.add('intro-active');
+        }, 100);
+
+        // Sequence timing
+        // 0.2s (Rahul) + 0.5s (Mahendra) + 0.8s (Bagur) + 0.8s (Reveal duration) + 0.8s (Hold) = ~3.1s
+        // Let's invert background at around 2.5s
+        
+        setTimeout(() => {
+            // Phase 2: Inversion
+            body.classList.remove('loading');
+            
+            // Move/Scale Name (Handled via CSS transitions on body and hiding overlay text if needed, 
+            // but for simplicity we are revealing main content which has the logo)
+            
+        }, 2500);
+
+        setTimeout(() => {
+            // Phase 3: Reveal Main Content
+            body.classList.add('intro-complete');
+            localStorage.setItem('introPlayed', 'true');
+        }, 3300); // Allow inversion transition to complete
+    } else {
+        // Skip Intro
+        body.classList.remove('loading');
+        body.classList.add('intro-complete');
+        if(introOverlay) introOverlay.style.display = 'none';
+    }
+
     // Spotlight Effect
     const spotlight = document.getElementById("spotlight");
     if (spotlight) {
@@ -59,4 +95,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-

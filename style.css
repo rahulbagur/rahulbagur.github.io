@@ -49,6 +49,7 @@ html::-webkit-scrollbar { display: none; }
   padding-left: 10%;
   pointer-events: none;
   background: #ffffff;
+  transition: opacity 0.8s ease;
 }
 
 .intro-text {
@@ -77,7 +78,10 @@ html::-webkit-scrollbar { display: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-body.intro-complete #intro-overlay { display: none !important; }
+body.intro-complete #intro-overlay { 
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Ambient Mesh */
 #ambient-mesh {
@@ -126,17 +130,19 @@ body.intro-complete #ambient-mesh { opacity: 1; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 140px 24px 60px;
-  min-height: 100vh; /* Force container to be at least full height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .main-content {
-  opacity: 0;
-  transition: opacity 0.8s ease 0.5s;
+  opacity: 1; /* Visible by default */
+  transition: opacity 0.8s ease;
 }
 
-body.intro-complete .main-content { opacity: 1; }
+body.loading .main-content {
+  opacity: 0; /* Hidden only during load */
+}
 
 /* Noise Overlay */
 body::before {
@@ -166,7 +172,7 @@ nav {
   top: 32px;
   left: 0;
   width: 100%;
-  display: none; /* Hidden by default during intro */
+  display: flex; 
   justify-content: center;
   z-index: 1000;
   pointer-events: none; 
@@ -175,7 +181,6 @@ nav {
 }
 
 body.intro-complete nav {
-  display: flex;
   opacity: 1;
   pointer-events: auto;
 }
@@ -188,10 +193,10 @@ body.intro-complete nav {
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background: rgba(10, 10, 10, 0.2); /* Very faint background */
+  background: rgba(10, 10, 10, 0.2); 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: none; /* Removed border */
+  border: none;
   border-radius: 100px;
 }
 
@@ -296,7 +301,7 @@ h1 {
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 footer {
-  margin-top: auto; /* Push to bottom of flex container */
+  margin-top: auto; 
   padding-bottom: 40px;
   border-top: 1px solid var(--border);
   padding-top: 40px;

@@ -152,29 +152,43 @@ body::before {
   z-index: 0;
 }
 
-/* Floating Navigation */
+/* Floating Navigation Wrapper */
 nav {
   position: fixed;
   top: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none; /* Let clicks pass through */
+  opacity: 0;
+  transition: opacity 0.8s ease 0.5s;
+}
+
+body.intro-complete nav {
+  opacity: 1;
+}
+
+/* The actual bar */
+.nav-bar {
+  pointer-events: auto; /* Re-enable clicks */
   width: calc(100% - 48px);
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
+  padding: 12px 24px; /* Padding matches container content edge */
   background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 100px;
-  z-index: 1000;
 }
 
 .logo {
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
@@ -182,7 +196,7 @@ nav {
 .nav-links {
   display: flex;
   gap: 32px;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 }
 
 .nav-links a {
@@ -287,28 +301,27 @@ footer {
 /* Responsive Overrides */
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: 1fr; /* Force stack on smaller screens */
+    grid-template-columns: 1fr;
   }
   .card.full-width {
     grid-column: span 1;
-  }
-  .container {
-    padding-top: 120px;
   }
 }
 
 @media (max-width: 768px) {
   nav {
+    top: 16px;
+  }
+  .nav-bar {
     width: calc(100% - 32px);
     padding: 12px 20px;
-    top: 16px;
   }
   .logo {
     font-size: 0.8rem;
   }
   .nav-links {
-    gap: 12px;
-    font-size: 0.75rem;
+    gap: 16px;
+    font-size: 0.7rem;
   }
   .card {
     padding: 30px 24px;

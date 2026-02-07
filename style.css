@@ -22,6 +22,8 @@ html, body {
   overflow-x: hidden;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  /* Hide scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -45,6 +47,7 @@ html::-webkit-scrollbar { display: none; }
   align-items: center;
   padding-left: 10%;
   pointer-events: none;
+  background: inherit; /* Matches body background */
 }
 
 .intro-text {
@@ -178,7 +181,7 @@ body.intro-complete nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px; /* Padding matches container content edge */
+  padding: 12px 24px;
   background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

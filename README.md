@@ -1,27 +1,26 @@
-# Rahul Bagur — Portfolio
+# Rahul Mahendra Bagur — Portfolio
 
-A high-end, high-performance portfolio website showcasing expertise in systems architecture, revenue operations, and automated workflows.
+> **⚠️ STATUS: MAJOR REVISIONS PENDING**
+> The current implementation of the site architecture and intro sequences has failed to meet the specified design requirements. Significant cleanup and a complete overhaul are required to restore the intended "Clean Version" aesthetic.
 
 ## 🔗 Live Site
 View the portfolio at: [https://rahulbagur.github.io](https://rahulbagur.github.io)
 
-## ✨ Aesthetic & Design
-- **Accio/Linear Aesthetic**: A premium dark-mode design featuring deep blacks, glassmorphism, and vibrant background glows.
-- **Bento Grid Layout**: Information is organized into clean, rounded tiles for high readability and technical appeal.
-- **Dynamic Elements**: Smooth entry animations and responsive typography using modern CSS features like `clamp()`.
+## ✨ Aesthetic & Design (In Transition)
+- **Identity Intro**: A 3-phase sequence involving a white-to-black inversion and staggered text reveal.
+- **Ambient Background**: Subtle animated mesh gradients behind dark-mode content.
+- **Bento Grid Layout**: Information organized into technical tiles on sub-pages.
 
 ## 📂 Site Structure
-- **Home (Landing Page)**: Centered high-impact overview of core mission and focus.
-- **Portfolio**: Archive of technical projects including Web Intelligence and GTM Architecture.
-- **About**: Background on professional mission, stack, and strategic interests.
-- **Contact**: Integrated contact form and social connection hub.
-- **Staging Lab**: A private R&D environment (accessible via `Shift + S`).
+- **Home**: Simplified landing page with direct branding and core mission.
+- **Portfolio**: Archive of technical projects.
+- **About**: Professional background and systems philosophy.
+- **Contact**: Social links and communication hub.
 
 ## 🛠️ Tech Stack
-- **Architecture**: Semantic HTML5 & Modern CSS3 (Grid, Flexbox, Root Variables).
-- **Optimization**: Root-relative asset paths for robust multi-page navigation.
-- **Typography**: Inter font family with high-contrast weights and gradient treatments.
-- **Interactions**: Vanilla JavaScript for micro-interactions and secure access logic.
+- **Architecture**: Semantic HTML5 & Modern CSS3.
+- **Animations**: CSS Keyframes and Cubic-Bezier transitions.
+- **Typography**: IBM Plex Mono for a high-end technical feel.
 
 ## 🚀 Local Development
 1. Clone the repository:
@@ -29,7 +28,6 @@ View the portfolio at: [https://rahulbagur.github.io](https://rahulbagur.github.
    git clone https://github.com/rahulbagur/rahulbagur.github.io.git
    ```
 2. Open `index.html` in any modern browser.
-3. Access the Staging Lab by pressing `Shift + S` on any page.
 
 ---
-© 2026 Rahul Bagur. Built for precision.
+© 2026 Rahul Mahendra Bagur. Revisions in progress.

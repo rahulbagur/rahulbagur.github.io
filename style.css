@@ -187,27 +187,40 @@ body::before {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 120px 24px 40px; /* Adjusted top padding for floating nav */
 }
 
-/* Navigation */
+/* Floating Navigation */
 nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  padding: 12px 24px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  z-index: 1000;
 }
 
 .logo {
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 0.9rem; /* Smaller for the floating bar */
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;
-  font-size: 0.875rem;
+  gap: 24px;
+  font-size: 0.8rem; /* Smaller for the floating bar */
 }
 
 .nav-links a {

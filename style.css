@@ -7,13 +7,10 @@
   --border: #111111;
   --font-mono: 'IBM Plex Mono', monospace;
   --radius: 0px;
+  --bezier: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
   background: var(--bg);
@@ -23,29 +20,37 @@ html, body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  /* Phase 2: Inversion Transition */
-  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Phase 2: Smooth Inversion of Body Background */
+  transition: background-color 0.8s var(--bezier);
 }
 
-/* Phase 1: Identity (White BG, Black Text) */
-body.loading {
-  background: #ffffff !important;
-  color: #000000 !important;
+/* =========================================
+   INTRO ANIMATION STYLES
+   ========================================= */
+
+/* Default State (Post-Intro) */
+body {
+  overflow-y: auto;
+}
+
+/* Phase 1: Identity State */
+body.intro-active {
+  background-color: #ffffff !important;
   overflow: hidden; /* Lock scroll */
 }
 
-/* Intro Container */
 #intro-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  inset: 0;
   z-index: 9999;
   display: flex;
-  align-items: center;
-  padding-left: 10vw; /* Massive negative space */
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%; /* Left aligned massive negative space */
   pointer-events: none;
+  /* Phase 2 Transition properties */
+  transition: transform 0.8s var(--bezier);
+  transform-origin: top left;
 }
 
 .intro-line {
@@ -53,15 +58,16 @@ body.loading {
   font-weight: 500;
   line-height: 1.1;
   display: block;
+  color: #000000; /* Phase 1 Color */
   opacity: 0;
   transform: translateY(40px);
-  color: inherit; /* Inherits from body (Black -> White) */
-  transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Phase 2 Color Transition */
+  transition: color 0.8s var(--bezier), letter-spacing 0.8s var(--bezier);
 }
 
-/* Animation: Reveal Name */
+/* Phase 1: Animations (Triggered by JS) */
 .intro-active .intro-line {
-  animation: introReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: introReveal 0.8s var(--bezier) forwards;
 }
 .intro-active .intro-line:nth-child(1) { animation-delay: 0.2s; }
 .intro-active .intro-line:nth-child(2) { animation-delay: 0.5s; }
@@ -71,40 +77,65 @@ body.loading {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Phase 2: Fade Out */
-body.intro-complete #intro-wrapper {
-  transition: opacity 0.8s ease;
-  opacity: 0;
+/* Phase 2: Inversion State (Triggered by JS) */
+body.intro-inverting {
+  background-color: #000000 !important;
 }
 
-/* Phase 3: Main Content Reveal */
+body.intro-inverting #intro-wrapper {
+  /* Move to top left (approximate position of logo) */
+  /* Calculate: Move -50% Y (center) to top (0) + 32px padding */
+  transform: translate(-5%, -45vh) scale(0.3); 
+}
+
+body.intro-inverting .intro-line {
+  color: #ffffff; /* Invert Text */
+  letter-spacing: -0.05em; /* Tighten */
+}
+
+/* Phase 3: Hand-off / Hide Intro */
+body.intro-complete #intro-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* MAIN CONTENT VISIBILITY */
 .main-content, nav, #ambient-mesh {
   opacity: 0;
-  transition: opacity 1s ease 0.8s; /* Delayed until inversion finishes */
+  transition: opacity 1.2s ease;
 }
 
-body.intro-complete .main-content,
-body.intro-complete nav,
-body.intro-complete #ambient-mesh {
+/* Phase 3: Reveal Content */
+body.intro-reveal .main-content,
+body.intro-reveal nav,
+body.intro-reveal #ambient-mesh {
   opacity: 1;
 }
 
-/* --------------------------------------------------------- */
-/* Rest of the Site Styles (Unchanged mostly) */
-/* --------------------------------------------------------- */
+/* Skip Intro State (Immediate Load) */
+body.intro-skipped .main-content,
+body.intro-skipped nav,
+body.intro-skipped #ambient-mesh {
+  opacity: 1;
+  transition: none;
+}
+body.intro-skipped #intro-wrapper {
+  display: none;
+}
+
+/* =========================================
+   STANDARD SITE STYLES
+   ========================================= */
+
+body::-webkit-scrollbar { display: none; }
+html::-webkit-scrollbar { display: none; }
 
 /* Ambient Mesh */
 #ambient-mesh {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
 }
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-}
+.blob { position: absolute; border-radius: 50%; filter: blur(100px); }
 .blob-1 {
   background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
   width: 700px; height: 700px; top: -10%; left: -10%;
@@ -124,138 +155,71 @@ body.intro-complete #ambient-mesh {
 @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-60px,40px) scale(0.95); } }
 @keyframes drift3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-50px) scale(1.05); } }
 
-/* Noise Overlay */
+/* Noise */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
+  content: ""; position: fixed; inset: 0;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.02;
-  pointer-events: none;
-  z-index: 1000;
+  opacity: 0.02; pointer-events: none; z-index: 1000;
 }
 
 /* Spotlight */
 .spotlight {
-  position: fixed;
-  width: 600px;
-  height: 600px;
+  position: fixed; width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 0;
+  transform: translate(-50%, -50%); pointer-events: none; z-index: 0;
 }
 
-/* Floating Navigation */
+/* Floating Nav */
 nav {
-  position: fixed;
-  top: 32px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
+  position: fixed; top: 32px; left: 0; width: 100%;
+  display: flex; justify-content: center; z-index: 1000;
 }
-
 .nav-bar {
-  width: calc(100% - 48px);
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: calc(100% - 48px); max-width: 1200px;
+  display: flex; justify-content: space-between; align-items: center;
   padding: 12px 24px;
-  background: rgba(10, 10, 10, 0.2); 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: none;
-  border-radius: 100px;
+  background: rgba(10, 10, 10, 0.2);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: none; border-radius: 100px;
 }
-
-.logo {
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  font-size: 0.85rem;
-}
-
-.nav-links a {
-  color: var(--fg-muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+.logo { font-weight: 500; font-size: 1rem; letter-spacing: -0.02em; white-space: nowrap; }
+.nav-links { display: flex; gap: 32px; font-size: 0.85rem; }
+.nav-links a { color: var(--fg-muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--fg); }
 
 /* Layout */
 .container {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 140px 24px 60px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;
+  padding: 140px 24px 60px; min-height: 100vh;
+  display: flex; flex-direction: column;
 }
 
 /* Hero */
 .hero { margin-bottom: 80px; }
 h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  margin-bottom: 24px;
+  font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 500;
+  letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px;
 }
 .hero p { font-size: 1.125rem; color: var(--fg-muted); }
 
 /* Bento Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Card */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .card {
-  position: relative;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  overflow: hidden;
+  position: relative; background: var(--card-bg); border: 1px solid var(--border);
+  backdrop-filter: blur(10px); padding: 40px; overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
 }
-.card.full-width {
-  grid-column: span 3;
-  padding: 30px 40px;
-}
+.card.full-width { grid-column: span 3; padding: 30px 40px; }
 .card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
+  content: ""; position: absolute; inset: 0; padding: 1px;
   background: radial-gradient(600px circle at var(--x) var(--y), rgba(255,255,255,0.35), transparent 40%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none; opacity: 0; transition: opacity 0.3s ease;
 }
 .card:hover::before { opacity: 1; }
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #222222;
-  box-shadow: 0 0 60px rgba(255,255,255,0.06);
-}
+.card:hover { transform: translateY(-6px); border-color: #222222; box-shadow: 0 0 60px rgba(255,255,255,0.06); }
 .card-tag { font-size: 0.75rem; color: var(--accent); margin-bottom: 16px; display: block; opacity: 0.8; }
 .card h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 16px; color: var(--fg); }
 .card p { color: var(--fg-muted); font-size: 0.95rem; line-height: 1.6; }
@@ -263,7 +227,6 @@ h1 {
 /* Interactive */
 .card-link { display: inline-block; text-decoration: none; transition: all 0.2s; }
 .magnetic { display: inline-block; transition: transform 0.2s ease; }
-
 .shimmer { position: relative; overflow: hidden; }
 .shimmer::after {
   content: ""; position: absolute; inset: 0;
@@ -271,23 +234,13 @@ h1 {
   transform: translateX(-100%); animation: shimmer 3s infinite;
 }
 @keyframes shimmer { 100% { transform: translateX(100%); } }
-
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+.reveal { opacity: 0; transform: translateY(30px); animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 footer {
-  margin-top: auto; 
-  padding-bottom: 40px;
-  border-top: 1px solid var(--border);
-  padding-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--fg-muted);
-  font-size: 0.875rem;
+  margin-top: auto; padding-bottom: 40px; border-top: 1px solid var(--border);
+  padding-top: 40px; display: flex; justify-content: space-between;
+  align-items: center; color: var(--fg-muted); font-size: 0.875rem;
 }
 
 @media (max-width: 1024px) {

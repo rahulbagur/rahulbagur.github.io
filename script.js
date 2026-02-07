@@ -1,42 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ---------------------------------------------------------
+    // INTRO ANIMATION LOGIC
+    // ---------------------------------------------------------
     const introPlayed = localStorage.getItem('introPlayed');
     const body = document.body;
+    
+    // Elements to control
     const introWrapper = document.getElementById('intro-wrapper');
 
     if (!introPlayed && introWrapper) {
-        // Phase 1: Reveal Names (White BG, Black Text)
+        // --- PHASE 1: IDENTITY (White BG, Names Reveal) ---
+        // Add class to trigger CSS animations on spans
+        // Wait a tiny bit to ensure DOM is ready
         setTimeout(() => {
             body.classList.add('intro-active');
         }, 100);
 
-        // Sequence:
-        // 0.2s (Rahul) + 0.5s (Mahendra) + 0.8s (Bagur) + 0.8s (Reveal) + 0.8s (Hold) = ~3.1s
-        
-        // Phase 2: Inversion (White -> Black) & Move/Scale
+        // Timeline:
+        // 0.0s: Start
+        // 0.2s: Rahul reveals
+        // 0.5s: Mahendra reveals
+        // 0.8s: Bagur reveals
+        // 0.8s: Reveal duration finishes at 1.6s
+        // Hold for 0.8s -> 2.4s total time before next phase.
+
+        // --- PHASE 2: INVERSION (White -> Black, Text -> White, Move/Scale) ---
         setTimeout(() => {
-            // This triggers the CSS transitions on body (bg/color) and intro-wrapper (transform)
-            body.classList.remove('loading');
-            body.classList.add('intro-complete'); 
+            body.classList.add('intro-inverting');
+        }, 2400);
+
+        // Transition takes 0.8s. So at 3.2s, inversion is done.
+
+        // --- PHASE 3: REVEAL (Main Content Fades In) ---
+        setTimeout(() => {
+            body.classList.add('intro-reveal');
             
-            // Mark as played immediately so reload skips
+            // Mark intro as complete to remove overlay pointer events
+            body.classList.add('intro-complete');
+            
+            // Save session
             localStorage.setItem('introPlayed', 'true');
-        }, 2800); 
+        }, 3200);
 
     } else {
-        // Skip Intro: Immediately set final state
-        body.classList.remove('loading');
-        body.classList.add('intro-complete');
-        // Disable transition for instant load
-        body.style.transition = 'none';
+        // --- SKIP INTRO (Immediate Load) ---
+        body.classList.add('intro-skipped');
+        // Force styling immediately without transition
+        body.style.backgroundColor = '#000000';
+        body.style.color = '#ffffff';
         if(introWrapper) introWrapper.style.display = 'none';
-        
-        // Re-enable transitions after a tick
-        setTimeout(() => {
-            body.style.transition = '';
-        }, 50);
     }
 
-    // Standard Interactions
+    // ---------------------------------------------------------
+    // STANDARD SITE INTERACTIONS
+    // ---------------------------------------------------------
+    
+    // Spotlight Effect
     const spotlight = document.getElementById("spotlight");
     if (spotlight) {
         document.addEventListener("mousemove", e => {
@@ -45,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dynamic Card Glow Border
     document.querySelectorAll(".card").forEach(card => {
         card.addEventListener("mousemove", e => {
             const rect = card.getBoundingClientRect();
@@ -55,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Magnetic Buttons/Links
     document.querySelectorAll(".magnetic").forEach(btn => {
         btn.addEventListener("mousemove", e => {
             const rect = btn.getBoundingClientRect();
@@ -68,15 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Secret shortcut to Staging Page (Shift + S)
     document.addEventListener('keydown', (e) => {
         if (e.shiftKey && e.key === 'S') {
             window.location.href = 'staging.html';
         }
     });
 
+    // Staging Page Logic
     if (window.location.pathname.includes('staging.html')) {
         const lockScreen = document.getElementById('lock-screen');
         const passInput = document.getElementById('passphrase');
+        
         if (passInput) {
             passInput.addEventListener('input', (e) => {
                 if (e.target.value.toLowerCase() === 'admin') {
@@ -85,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
         if (localStorage.getItem('lab_access') === 'true' && lockScreen) {
             lockScreen.style.display = 'none';
         }

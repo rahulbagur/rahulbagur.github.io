@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Mahendra Bagur — Revenue Systems Architect</title>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1.2.8">
+
+</head>
+
+<body class="landing">
+
+<!-- 1. Ambient Background -->
+<div class="mesh">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+
+<!-- 2. Intro Text / Logo -->
+<div class="intro-name" id="intro-text">
+  <div>Rahul</div>
+  <div>Mahendra</div>
+  <div>Bagur</div>
+</div>
+
+<!-- 3. Navigation (Simplified for Landing Page) -->
+<div class="landing-nav">
+  <a href="index.html" class="magnetic">Home</a>
+  <a href="portfolio.html" class="magnetic">Portfolio</a>
+  <a href="about.html" class="magnetic">About</a>
+  <a href="contact.html" class="magnetic">Contact</a>
+</div>
+
+<!-- 4. Hero Content -->
+<div class="hero">
+  <h1>Architecting the future of revenue operations.</h1>
+  <p>High performance automation, data workflows, and GTM strategy designed for technical excellence and measurable business impact.</p>
+  <div class="buttons">
+    <a href="portfolio.html">View Projects</a>
+  </div>
+</div>
+
+<!-- 5. Footer -->
+<footer>
+  <p>&copy; 2026 Rahul Mahendra Bagur</p>
+  <div style="display: flex; gap: 24px;">
+    <a href="https://www.linkedin.com/in/rahulbagur" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/rahulbagur" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const introPlayed = localStorage.getItem('introPlayed');
+  
+  if (!introPlayed) {
+    setTimeout(() => {
+      document.body.classList.add("dark");
+      localStorage.setItem('introPlayed', 'true');
+    }, 2200); 
+  } else {
+    document.body.classList.add("dark");
+    document.body.classList.add("no-intro");
+  }
+});
+</script>
+
+</body>
+</html>

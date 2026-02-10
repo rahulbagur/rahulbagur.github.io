@@ -5,7 +5,7 @@
   <title>Portfolio — Rahul Mahendra Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.2.7">
+  <link rel="stylesheet" href="style.css?v=1.2.8">
 </head>
 <body class="dark">
   
@@ -23,17 +23,17 @@
 
   <nav>
     <div class="nav-bar">
-      <div class="real-logo"></div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <header class="hero" style="position: relative; opacity: 1; transform: none; top: auto; left: auto; padding-top: 120px;">
+    <header class="hero">
       <h1>Project Archive</h1>
       <p>
         A collection of systems, tools, and architectures built to solve complex problems with technical precision.
@@ -41,28 +41,28 @@
     </header>
 
     <main class="grid">
-      <div class="card reveal" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.1s;">
         <span class="card-tag">01 / AUTOMATION</span>
         <h2>Web Intelligence</h2>
         <p>Detecting ICP rules and website technologies at scale.</p>
         <a href="#" class="card-link magnetic" style="color: #fff; text-decoration: none; margin-top: 24px; display: inline-block;">View Case Study</a>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.3s;">
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">02 / ARCHITECTURE</span>
         <h2>GTM Unified Flow</h2>
         <p>Mapping the entire revenue journey from intent to close.</p>
         <a href="#" class="card-link magnetic" style="color: #fff; text-decoration: none; margin-top: 24px; display: inline-block;">View Diagram</a>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.4s;">
+      <div class="card reveal" style="animation-delay: 0.3s;">
         <span class="card-tag">03 / AI AGENT</span>
         <h2>AI SDR System</h2>
         <p>End-to-end automated outreach using advanced LLMs.</p>
         <a href="staging.html" class="card-link magnetic" style="color: #fff; text-decoration: none; margin-top: 24px; display: inline-block;">View Specs</a>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.5s;">
+      <div class="card reveal" style="animation-delay: 0.4s;">
         <span class="card-tag">04 / DATA VIZ</span>
         <h2>Revenue Flow</h2>
         <p>Visualizing leakage points in multi-channel attribution.</p>
@@ -78,5 +78,14 @@
       </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('introPlayed') === 'true') {
+        document.body.classList.add("no-intro");
+      }
+    });
+  </script>
 </body>
 </html>

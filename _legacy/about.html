@@ -5,7 +5,7 @@
   <title>About — Rahul Mahendra Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.2.7">
+  <link rel="stylesheet" href="style.css?v=1.2.8">
 </head>
 <body class="dark">
   
@@ -23,17 +23,17 @@
 
   <nav>
     <div class="nav-bar">
-      <div class="real-logo"></div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <header class="hero" style="position: relative; opacity: 1; transform: none; top: auto; left: auto; padding-top: 120px;">
+    <header class="hero">
       <h1>About Me</h1>
       <p>
         I design revenue systems that execute.<br>
@@ -43,7 +43,7 @@
 
     <main class="grid">
       <!-- ROW 1: WIDE -->
-      <div class="card full-width reveal" style="animation-delay: 0.2s;">
+      <div class="card full-width reveal" style="animation-delay: 0.1s;">
         <span class="card-tag">// EDUCATION</span>
         <h2>Systems First Thinking</h2>
         <p>
@@ -51,8 +51,8 @@
         </p>
       </div>
 
-      <!-- ROW 2: THREE EQUAL CARDS -->
-      <div class="card reveal" style="animation-delay: 0.3s;">
+      <!-- ROW 2: CARDS -->
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">// PROFESSIONAL EXPERIENCE</span>
         <h2>0 to 1 Execution</h2>
         <p>
@@ -60,7 +60,7 @@
         </p>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.4s;">
+      <div class="card reveal" style="animation-delay: 0.3s;">
         <span class="card-tag">// WHY THIS PATH</span>
         <h2>Why Revenue Systems</h2>
         <p>
@@ -68,7 +68,7 @@
         </p>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.5s;">
+      <div class="card reveal" style="animation-delay: 0.4s;">
         <span class="card-tag">// CURRENT FOCUS</span>
         <h2>Infrastructure for Scale</h2>
         <p>
@@ -77,24 +77,24 @@
       </div>
 
       <!-- ROW 3: WIDE -->
-      <div class="card full-width reveal" style="animation-delay: 0.6s;">
+      <div class="card full-width reveal" style="animation-delay: 0.5s;">
         <span class="card-tag">// SKILLS</span>
         <h2>Tools & Systems</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 16px;">
           <div>
-            <h3 style="font-size: 0.8rem; color: var(--accent); margin-bottom: 8px;">REVENUE & GROWTH</h3>
+            <h3 style="font-size: 0.8rem; color: var(--fg); margin-bottom: 8px;">REVENUE & GROWTH</h3>
             <p style="font-size: 0.8rem; line-height: 1.4;">Databricks · MoEngage · Apollo · Zoho · SalesIQ · LinkedIn Nav</p>
           </div>
           <div>
-            <h3 style="font-size: 0.8rem; color: var(--accent); margin-bottom: 8px;">TECHNICAL</h3>
+            <h3 style="font-size: 0.8rem; color: var(--fg); margin-bottom: 8px;">TECHNICAL</h3>
             <p style="font-size: 0.8rem; line-height: 1.4;">Python · SQL · Node.js · HTML · CSS</p>
           </div>
           <div>
-            <h3 style="font-size: 0.8rem; color: var(--accent); margin-bottom: 8px;">AI & AUTOMATION</h3>
+            <h3 style="font-size: 0.8rem; color: var(--fg); margin-bottom: 8px;">AI & AUTOMATION</h3>
             <p style="font-size: 0.8rem; line-height: 1.4;">Gemini CLI · Prompt Engineering · Workflow</p>
           </div>
           <div>
-            <h3 style="font-size: 0.8rem; color: var(--accent); margin-bottom: 8px;">DESIGN & OPS</h3>
+            <h3 style="font-size: 0.8rem; color: var(--fg); margin-bottom: 8px;">DESIGN & OPS</h3>
             <p style="font-size: 0.8rem; line-height: 1.4;">Figma · Blender · Google Workspace · Zoom</p>
           </div>
         </div>
@@ -109,5 +109,14 @@
       </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('introPlayed') === 'true') {
+        document.body.classList.add("no-intro");
+      }
+    });
+  </script>
 </body>
 </html>

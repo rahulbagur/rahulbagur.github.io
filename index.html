@@ -1,74 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul Mahendra Bagur — Revenue Systems Architect</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahul Mahendra Bagur | Revenue Systems Architect</title>
+    
+    <!-- Favicon: Neon 'B' to match brand -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='40' fill='%23d946ef' style='filter: drop-shadow(0 0 4px %23d946ef);'%3EB%3C/text%3E%3C/svg%3E" />
 
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1.2.7">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-color: #050505;
+        --cursor-size: 20px;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: #ffffff;
+        font-family: 'IBM Plex Mono', monospace;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Noise Overlay */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
 
-</head>
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
 
-<body>
+      /* Ambient Blob Animations - Updated for larger, fluid movement */
+      
+      @keyframes blob-bounce-1 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        25% { transform: translate(200px, 150px) scale(1.1); }
+        50% { transform: translate(100px, 300px) scale(0.9); }
+        75% { transform: translate(-50px, 150px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
 
-<!-- 1. Ambient Background -->
-<div class="mesh">
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-</div>
+      @keyframes blob-bounce-2 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(-250px, 100px) scale(1.2); }
+        66% { transform: translate(-100px, -150px) scale(0.85); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
 
-<!-- 2. Intro Text / Logo -->
-<div class="intro-name" id="intro-text">
-  <div>Rahul</div>
-  <div>Mahendra</div>
-  <div>Bagur</div>
-</div>
+      @keyframes blob-bounce-3 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(150px, -200px) scale(1.1); }
+        66% { transform: translate(-100px, -100px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      
+      @keyframes aurora-1 {
+        0% { background-color: rgba(55, 48, 163, 0.4); } /* indigo-800 */
+        50% { background-color: rgba(124, 58, 237, 0.4); } /* violet-600 */
+        100% { background-color: rgba(29, 78, 216, 0.4); } /* blue-700 */
+      }
+      @keyframes aurora-2 {
+        0% { background-color: rgba(15, 23, 42, 0.5); } /* slate-900 */
+        50% { background-color: rgba(13, 148, 136, 0.4); } /* teal-600 */
+        100% { background-color: rgba(6, 182, 212, 0.4); } /* cyan-500 */
+      }
+      @keyframes aurora-3 {
+        0% { background-color: rgba(31, 41, 55, 0.5); } /* gray-800 */
+        50% { background-color: rgba(219, 39, 119, 0.4); } /* pink-600 */
+        100% { background-color: rgba(109, 40, 217, 0.4); } /* violet-700 */
+      }
 
-<!-- 3. Navigation (Simplified for Landing Page) -->
-<div class="landing-nav">
-  <a href="index.html" class="magnetic">Home</a>
-  <a href="portfolio.html" class="magnetic">Portfolio</a>
-  <a href="about.html" class="magnetic">About</a>
-</div>
+      .animate-aurora-1 {
+        animation: blob-bounce-1 45s infinite ease-in-out, aurora-1 40s infinite alternate linear;
+      }
+      .animate-aurora-2 {
+        animation: blob-bounce-2 55s infinite ease-in-out, aurora-2 50s infinite alternate linear;
+      }
+      .animate-aurora-3 {
+        animation: blob-bounce-3 50s infinite ease-in-out, aurora-3 45s infinite alternate linear;
+      }
 
-<!-- 4. Hero Content -->
-<div class="hero">
-  <h1>Architecting the future of revenue operations.</h1>
-  <p>High performance automation, data workflows, and GTM strategy designed for technical excellence and measurable business impact.</p>
-  <div class="buttons">
-    <a href="portfolio.html">View Projects</a>
-  </div>
-</div>
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
 
-<!-- 5. Footer -->
-<footer>
-  <p>&copy; 2026 Rahul Mahendra Bagur</p>
-  <div style="display: flex; gap: 24px;">
-    <a href="https://www.linkedin.com/in/rahulbagur" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="https://github.com/rahulbagur" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const introPlayed = localStorage.getItem('introPlayed');
-  
-  if (!introPlayed) {
-    setTimeout(() => {
-      document.body.classList.add("dark");
-      localStorage.setItem('introPlayed', 'true');
-    }, 2200); 
-  } else {
-    document.body.classList.add("dark");
-    const introText = document.getElementById('intro-text');
-    if(introText) {
-       introText.style.transition = 'none';
-    }
+      /* Utility for changing transition speed */
+      .transition-slow {
+        transition-duration: 1500ms;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
   }
-});
+}
 </script>
-
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

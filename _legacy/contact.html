@@ -5,7 +5,7 @@
   <title>Contact — Rahul Mahendra Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.2.6">
+  <link rel="stylesheet" href="style.css?v=1.2.8">
   <style>
     /* Page specific overrides for contact form */
     .contact-form { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; text-align: left; }
@@ -31,7 +31,6 @@
 
   <nav>
     <div class="nav-bar">
-      <div class="real-logo"></div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
@@ -42,7 +41,7 @@
   </nav>
 
   <div class="container">
-    <header class="hero" style="position: relative; opacity: 1; transform: none; top: auto; left: auto; padding-top: 120px;">
+    <header class="hero">
       <h1>Contact</h1>
       <p>
         Interested in systems architecture or automation? Let's build something efficient together.
@@ -50,7 +49,7 @@
     </header>
 
     <main class="grid">
-      <div class="card reveal" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.1s;">
         <span class="card-tag">// CONNECT</span>
         <h2>Socials</h2>
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
@@ -59,7 +58,7 @@
         </div>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.3s;">
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">// MESSAGE</span>
         <form class="contact-form">
           <input type="text" placeholder="Name" required>
@@ -78,5 +77,14 @@
       </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('introPlayed') === 'true') {
+        document.body.classList.add("no-intro");
+      }
+    });
+  </script>
 </body>
 </html>

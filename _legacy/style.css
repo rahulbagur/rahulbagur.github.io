@@ -1,17 +1,19 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
   --bg: #000000;
   --fg: #ffffff;
   --fg-muted: #88888b;
+  --accent: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
   --font-mono: 'IBM Plex Mono', monospace;
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: var(--font-mono);
   background: #ffffff;
   color: #000000;
-  overflow: hidden;
+  overflow-x: hidden;
   transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 100vh;
@@ -51,7 +53,6 @@ body {
 body.dark {
   background: #000000;
   color: #ffffff;
-  overflow-y: auto;
 }
 
 /* Move Name to Top Left (Logo Position) */
@@ -64,6 +65,13 @@ body.dark .intro-name {
   flex-direction: row;
   gap: 0.4em;
   opacity: 1;
+}
+
+/* Ensure sub-page logo doesn't animate if already in dark mode */
+body.dark.no-intro .intro-name div {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 /* ===== LANDING PAGE NAV (No Bar) ===== */
@@ -84,62 +92,91 @@ body.dark .landing-nav {
 
 .landing-nav a {
   text-decoration: none;
-  color: #888;
+  color: var(--fg-muted);
   font-size: 0.85rem;
   transition: color 0.2s;
 }
 
 .landing-nav a:hover {
-  color: #fff;
+  color: var(--fg);
 }
 
-/* ===== SUB-PAGE NAV BAR (Floating Blurred) ===== */
+/* ===== SUB-PAGE NAV BAR (Floating Pilled) ===== */
 nav {
   position: fixed;
-  top: 32px;
-  left: 0;
-  width: 100%;
+  top: 40px;
+  right: 8%; /* Anchor to right */
+  left: auto; /* Release left anchor */
+  width: auto; /* Shrink to fit */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+body.dark nav {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .nav-bar {
-  width: calc(100% - 48px);
-  max-width: 1200px;
+  width: auto; /* Shrink to fit content */
   display: flex;
-  justify-content: space-between;
+  gap: 32px;
   align-items: center;
-  padding: 12px 24px;
-  background: rgba(10, 10, 10, 0.2);
+  padding: 12px 32px;
+  background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 100px;
+  border: 1px solid var(--border);
 }
 
-.logo { font-weight: 500; font-size: 1rem; letter-spacing: -0.02em; white-space: nowrap; }
 .nav-links { display: flex; gap: 32px; font-size: 0.85rem; }
-.nav-links a { color: #888; text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: #fff; }
+.nav-links a { color: var(--fg-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--fg); }
 
-/* ===== HERO & CONTENT ===== */
-.hero, .main-content, footer {
+/* ===== LAYOUT & GRID ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 180px 8% 100px; /* Increased top padding for header clearance */
+  position: relative;
+  z-index: 2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  max-width: 800px;
+  z-index: 2;
   opacity: 0;
   transition: opacity 1s ease 0.5s;
 }
 
-body.dark .hero, 
-body.dark .main-content,
-body.dark footer {
-  opacity: 1;
+/* Default Landing Hero (Standalone) */
+body.landing .hero {
+  margin-top: 35vh;
+  margin-left: 8%;
 }
 
-.hero {
-  position: relative;
-  margin-top: 35vh; /* Adjusted for better center feel without nav */
-  margin-left: 8%;
-  max-width: 800px;
-  z-index: 2;
+/* Sub-page Hero (Inside Container) */
+.container .hero {
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 64px;
+}
+
+body.dark .hero {
+  opacity: 1;
 }
 
 .hero h1 {
@@ -151,7 +188,7 @@ body.dark footer {
 
 .hero p {
   font-size: 1.125rem;
-  color: #888;
+  color: var(--fg-muted);
   margin-bottom: 48px;
   max-width: 650px;
 }
@@ -159,8 +196,8 @@ body.dark footer {
 .buttons a {
   display: inline-block;
   padding: 12px 28px;
-  background: #fff;
-  color: #000;
+  background: var(--fg);
+  color: var(--bg);
   text-decoration: none;
   font-size: 0.9rem;
   transition: 0.3s ease;
@@ -168,17 +205,31 @@ body.dark footer {
 
 /* ===== FOOTER ===== */
 footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 80px auto 40px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--fg-muted);
+  font-size: 0.875rem;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
+  padding: 0 8%;
+}
+
+body.dark footer { opacity: 1; }
+
+footer a { color: var(--fg-muted); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--fg); }
+
+/* Specific footer for landing page to keep it fixed */
+body.landing footer {
   position: fixed;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  color: #888;
-  font-size: 0.875rem;
-  z-index: 10;
+  margin: 0;
 }
 
 /* ===== AMBIENT MESH ===== */
@@ -205,11 +256,15 @@ body.dark::before {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  body.dark .intro-name { left: 24px; top: 40px; width: auto; transform: none; padding: 0; }
-  .landing-nav { top: 80px; left: 24px; right: auto; } /* Stack below logo on mobile */
-  .nav-bar { width: calc(100% - 32px); padding: 12px 20px; }
-  nav { top: 16px; }
-  .hero { margin-left: 24px; margin-right: 24px; margin-top: 25vh; }
-  footer { width: calc(100% - 32px); bottom: 20px; flex-direction: column; align-items: center; gap: 16px; }
+@media (max-width: 1024px) {
+  .card { grid-column: span 12; }
 }
+
+@media (max-width: 768px) {
+  body.dark .intro-name { left: 24px; top: 40px; }
+  .landing-nav { top: 80px; left: 8%; right: auto; }
+  .hero { margin-top: 20vh; }
+  .container { padding-top: 140px; }
+  footer { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+}
+

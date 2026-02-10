@@ -5,7 +5,7 @@
   <title>Lab — Rahul Mahendra Bagur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.2.6">
+  <link rel="stylesheet" href="style.css?v=1.2.8">
   <style>
     #lock-screen {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -32,28 +32,27 @@
 
   <nav>
     <div class="nav-bar">
-      <div class="logo">LAB</div>
       <div class="nav-links">
-        <a href="index.html" class="magnetic" style="color: var(--fg-muted); text-decoration: none;">← Back to Public</a>
+        <a href="index.html" class="magnetic">← Back to Public</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <header class="hero reveal" style="animation-delay: 0.1s; position: relative; opacity: 1; transform: none; top: auto; left: auto; padding-top: 120px;">
+    <header class="hero">
       <h1>Research & Development</h1>
       <p>Experimental systems, automated workflows, and architectural drafts.</p>
     </header>
 
     <main class="grid">
-      <div class="card reveal" style="animation-delay: 0.2s;">
+      <div class="card reveal" style="animation-delay: 0.1s;">
         <span class="card-tag">DRAFT / 01</span>
         <h2>Gemini CLI Replica</h2>
         <p>Headless automation for Gemini LLM interactions via Selenium.</p>
         <span class="card-link" style="opacity: 0.5; cursor: not-allowed; display: inline-block; margin-top: 24px;">Locked</span>
       </div>
 
-      <div class="card reveal" style="animation-delay: 0.3s;">
+      <div class="card reveal" style="animation-delay: 0.2s;">
         <span class="card-tag">DRAFT / 02</span>
         <h2>Revenue Flow Viz</h2>
         <p>Multi-channel attribution and leakage visualization using D3.js.</p>
@@ -62,6 +61,14 @@
     </main>
   </div>
 
-  <script src="script.js?v=1.2.6"></script>
+  <script src="script.js?v=1.2.8"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('introPlayed') === 'true') {
+        document.body.classList.add("no-intro");
+      }
+    });
+  </script>
+</body>
 </body>
 </html>

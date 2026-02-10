@@ -1,33 +1,20 @@
-# Rahul Mahendra Bagur — Portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-> **⚠️ STATUS: MAJOR REVISIONS PENDING**
-> The current implementation of the site architecture and intro sequences has failed to meet the specified design requirements. Significant cleanup and a complete overhaul are required to restore the intended "Clean Version" aesthetic.
+# Run and deploy your AI Studio app
 
-## 🔗 Live Site
-View the portfolio at: [https://rahulbagur.github.io](https://rahulbagur.github.io)
+This contains everything you need to run your app locally.
 
-## ✨ Aesthetic & Design (In Transition)
-- **Identity Intro**: A 3-phase sequence involving a white-to-black inversion and staggered text reveal.
-- **Ambient Background**: Subtle animated mesh gradients behind dark-mode content.
-- **Bento Grid Layout**: Information organized into technical tiles on sub-pages.
+View your app in AI Studio: https://ai.studio/apps/drive/1DMmyRQC0B2QpC-ylu8GmBgfoLlZaVcq_
 
-## 📂 Site Structure
-- **Home**: Simplified landing page with direct branding and core mission.
-- **Portfolio**: Archive of technical projects.
-- **About**: Professional background and systems philosophy.
-- **Contact**: Social links and communication hub.
+## Run Locally
 
-## 🛠️ Tech Stack
-- **Architecture**: Semantic HTML5 & Modern CSS3.
-- **Animations**: CSS Keyframes and Cubic-Bezier transitions.
-- **Typography**: IBM Plex Mono for a high-end technical feel.
+**Prerequisites:**  Node.js
 
-## 🚀 Local Development
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/rahulbagur/rahulbagur.github.io.git
-   ```
-2. Open `index.html` in any modern browser.
 
----
-© 2026 Rahul Mahendra Bagur. Revisions in progress.
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

@@ -19,23 +19,34 @@ const Contact: React.FC = () => {
 
         <div className="flex gap-4 pt-4">
           <Magnetic>
-            <a href="#" className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+            <a 
+              href="mailto:rahul@rahulbagur.com" 
+              className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all"
+              title="Email"
+            >
               <Mail size={20} />
             </a>
           </Magnetic>
           <Magnetic>
-            <a href="#" className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+            <a 
+              href="https://www.linkedin.com/in/rahulbagur" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all"
+              title="LinkedIn"
+            >
               <Linkedin size={20} />
             </a>
           </Magnetic>
           <Magnetic>
-            <a href="#" className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+            <a 
+              href="https://github.com/rahulbagur" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all"
+              title="GitHub"
+            >
               <Github size={20} />
-            </a>
-          </Magnetic>
-          <Magnetic>
-            <a href="#" className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
-              <Twitter size={20} />
             </a>
           </Magnetic>
         </div>

@@ -213,8 +213,34 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Subtle Footer */}
-      <footer className={`fixed bottom-6 right-6 z-40 text-[10px] text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
-        SYSTEM.VER.2.0.4
+      <footer className={`fixed bottom-0 left-0 w-full z-40 transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5 bg-black/50 backdrop-blur-sm">
+          <div className="text-[10px] text-gray-500 font-mono">
+            &copy; 2026 RAHUL MAHENDRA BAGUR
+          </div>
+          
+          <div className="flex gap-8 items-center">
+            <a 
+              href="https://www.linkedin.com/in/rahulbagur" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[10px] text-gray-500 hover:text-white transition-colors font-mono tracking-widest uppercase"
+            >
+              LinkedIn
+            </a>
+            <a 
+              href="https://github.com/rahulbagur" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[10px] text-gray-500 hover:text-white transition-colors font-mono tracking-widest uppercase"
+            >
+              GitHub
+            </a>
+            <span className="text-[10px] text-gray-700 font-mono">
+              SYSTEM.VER.2.0.4
+            </span>
+          </div>
+        </div>
       </footer>
     </div>
   );

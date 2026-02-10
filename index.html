@@ -6,7 +6,7 @@
     <title>Rahul Mahendra Bagur | Revenue Systems Architect</title>
     
     <!-- Favicon: Circular Mask for favicon.png -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3CclipPath id='c'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3C/clipPath%3E%3Cimage href='/favicon.png' width='100' height='100' clip-path='url(%23c)'/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3CclipPath id='c'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3C/clipPath%3E%3Cimage href='./favicon.png' width='100' height='100' clip-path='url(%23c)'/%3E%3C/svg%3E" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,8 +54,7 @@
         background: #555;
       }
 
-      /* Ambient Blob Animations - Updated for larger, fluid movement */
-      
+      /* Ambient Blob Animations */
       @keyframes blob-bounce-1 {
         0% { transform: translate(0px, 0px) scale(1); }
         25% { transform: translate(200px, 150px) scale(1.1); }
@@ -79,19 +78,19 @@
       }
       
       @keyframes aurora-1 {
-        0% { background-color: rgba(55, 48, 163, 0.4); } /* indigo-800 */
-        50% { background-color: rgba(124, 58, 237, 0.4); } /* violet-600 */
-        100% { background-color: rgba(29, 78, 216, 0.4); } /* blue-700 */
+        0% { background-color: rgba(55, 48, 163, 0.4); }
+        50% { background-color: rgba(124, 58, 237, 0.4); }
+        100% { background-color: rgba(29, 78, 216, 0.4); }
       }
       @keyframes aurora-2 {
-        0% { background-color: rgba(15, 23, 42, 0.5); } /* slate-900 */
-        50% { background-color: rgba(13, 148, 136, 0.4); } /* teal-600 */
-        100% { background-color: rgba(6, 182, 212, 0.4); } /* cyan-500 */
+        0% { background-color: rgba(15, 23, 42, 0.5); }
+        50% { background-color: rgba(13, 148, 136, 0.4); }
+        100% { background-color: rgba(6, 182, 212, 0.4); }
       }
       @keyframes aurora-3 {
-        0% { background-color: rgba(31, 41, 55, 0.5); } /* gray-800 */
-        50% { background-color: rgba(219, 39, 119, 0.4); } /* pink-600 */
-        100% { background-color: rgba(109, 40, 217, 0.4); } /* violet-700 */
+        0% { background-color: rgba(31, 41, 55, 0.5); }
+        50% { background-color: rgba(219, 39, 119, 0.4); }
+        100% { background-color: rgba(109, 40, 217, 0.4); }
       }
 
       .animate-aurora-1 {
@@ -110,28 +109,10 @@
       .animation-delay-4000 {
         animation-delay: 4s;
       }
-
-      /* Utility for changing transition speed */
-      .transition-slow {
-        transition-duration: 1500ms;
-      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahul Mahendra Bagur | Revenue Systems Architect</title>
+    
+    <!-- Favicon: Circular Mask for favicon.png -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3CclipPath id='c'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3C/clipPath%3E%3Cimage href='./favicon.png' width='100' height='100' clip-path='url(%23c)'/%3E%3C/svg%3E" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-color: #050505;
+        --cursor-size: 20px;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: #ffffff;
+        font-family: 'IBM Plex Mono', monospace;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Noise Overlay */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Ambient Blob Animations */
+      @keyframes blob-bounce-1 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        25% { transform: translate(200px, 150px) scale(1.1); }
+        50% { transform: translate(100px, 300px) scale(0.9); }
+        75% { transform: translate(-50px, 150px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+
+      @keyframes blob-bounce-2 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(-250px, 100px) scale(1.2); }
+        66% { transform: translate(-100px, -150px) scale(0.85); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+
+      @keyframes blob-bounce-3 {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(150px, -200px) scale(1.1); }
+        66% { transform: translate(-100px, -100px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      
+      @keyframes aurora-1 {
+        0% { background-color: rgba(55, 48, 163, 0.4); }
+        50% { background-color: rgba(124, 58, 237, 0.4); }
+        100% { background-color: rgba(29, 78, 216, 0.4); }
+      }
+      @keyframes aurora-2 {
+        0% { background-color: rgba(15, 23, 42, 0.5); }
+        50% { background-color: rgba(13, 148, 136, 0.4); }
+        100% { background-color: rgba(6, 182, 212, 0.4); }
+      }
+      @keyframes aurora-3 {
+        0% { background-color: rgba(31, 41, 55, 0.5); }
+        50% { background-color: rgba(219, 39, 119, 0.4); }
+        100% { background-color: rgba(109, 40, 217, 0.4); }
+      }
+
+      .animate-aurora-1 {
+        animation: blob-bounce-1 45s infinite ease-in-out, aurora-1 40s infinite alternate linear;
+      }
+      .animate-aurora-2 {
+        animation: blob-bounce-2 55s infinite ease-in-out, aurora-2 50s infinite alternate linear;
+      }
+      .animate-aurora-3 {
+        animation: blob-bounce-3 50s infinite ease-in-out, aurora-3 45s infinite alternate linear;
+      }
+
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BJ2ABJzI.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

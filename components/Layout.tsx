@@ -225,7 +225,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Subtle Footer */}
       <footer className={`fixed bottom-6 right-6 z-40 text-[10px] text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
-        SYSTEM.VER.2.0.4
+        <div className="flex gap-4">
+          <a 
+            href="https://www.linkedin.com/in/rahulbagur" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-gray-400 transition-colors"
+          >
+            LINKEDIN
+          </a>
+          <a 
+            href="https://github.com/rahulbagur/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-gray-400 transition-colors"
+          >
+            GITHUB
+          </a>
+        </div>
       </footer>
     </div>
   );

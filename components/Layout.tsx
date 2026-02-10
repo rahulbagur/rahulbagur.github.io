@@ -224,13 +224,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Subtle Footer */}
-      <footer className={`fixed bottom-6 right-6 z-40 text-[10px] text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex gap-4">
+      <footer className={`fixed bottom-8 left-0 w-full z-40 text-xs text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-end gap-6 pointer-events-auto">
           <a 
             href="https://www.linkedin.com/in/rahulbagur" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="hover:text-gray-400 transition-colors"
+            className="hover:text-white transition-colors"
           >
             LINKEDIN
           </a>
@@ -238,7 +238,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             href="https://github.com/rahulbagur/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="hover:text-gray-400 transition-colors"
+            className="hover:text-white transition-colors"
           >
             GITHUB
           </a>

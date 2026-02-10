@@ -224,24 +224,29 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Subtle Footer */}
-      <footer className={`fixed bottom-8 left-0 w-full z-40 text-xs text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-end gap-6 pointer-events-auto">
-          <a 
-            href="https://www.linkedin.com/in/rahulbagur" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-white transition-colors"
-          >
-            LINKEDIN
-          </a>
-          <a 
-            href="https://github.com/rahulbagur/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-white transition-colors"
-          >
-            GITHUB
-          </a>
+      <footer className={`fixed bottom-8 left-0 w-full z-40 text-sm text-gray-700 font-mono transition-opacity duration-[2000ms] ${introComplete ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center pointer-events-auto">
+          <div className="text-gray-800">
+            © RAHUL MAHENDRA BAGUR 2026
+          </div>
+          <div className="flex gap-8">
+            <a 
+              href="https://www.linkedin.com/in/rahulbagur" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition-colors"
+            >
+              LINKEDIN
+            </a>
+            <a 
+              href="https://github.com/rahulbagur/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition-colors"
+            >
+              GITHUB
+            </a>
+          </div>
         </div>
       </footer>
     </div>

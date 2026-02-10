@@ -22,10 +22,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     // Check session storage to skip animation on subsequent visits
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    if (hasVisited) {
-      setStep(5);
-    } else {
+    try {
+        const hasVisited = sessionStorage.getItem('hasVisited');
+        if (hasVisited) {
+          setStep(5);
+        } else {
+          startAnimation();
+        }
+    } catch (e) {
+        // Fallback if sessionStorage is blocked
+        startAnimation();
+    }
+    
+    function startAnimation() {
       const timers: ReturnType<typeof setTimeout>[] = [];
       
       // Sequence timing - Faster, tighter sequence (~0.6s - 0.8s gaps)
@@ -36,7 +45,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       timers.push(setTimeout(() => setStep(4), 2500));  // Invert Colors (+0.8s)
       timers.push(setTimeout(() => {
         setStep(5); // Minimize & Load Content
-        sessionStorage.setItem('hasVisited', 'true');
+        try {
+            sessionStorage.setItem('hasVisited', 'true');
+        } catch (e) { /* ignore */ }
       }, 4000)); // Increased delay to 1.5s after inversion before minimizing
 
       return () => timers.forEach(clearTimeout);

@@ -30,11 +30,6 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-24 border-t border-white/10 pt-8">
-        <p className="text-xs text-gray-600 font-mono">
-          © Rahul Mahendra Bagur 2026
-        </p>
-      </div>
     </div>
   );
 };

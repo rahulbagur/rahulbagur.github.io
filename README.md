@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Rahul Bagur
 
-# Run and deploy your AI Studio app
+Personal site for [rahulbagur.github.io](https://rahulbagur.github.io/). React 19 and Vite 6. GitHub Pages deploys from `main` with `.github/workflows/deploy.yml` (Node 20, `npm ci`, `npm run build`, `./dist`).
 
-This contains everything you need to run your app locally.
+Visual rules live in `DESIGN.md`.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1DMmyRQC0B2QpC-ylu8GmBgfoLlZaVcq_
+## Run locally
 
-## Run Locally
+```bash
+npm ci
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+Production build:
 
+```bash
+npm run build
+npm run preview
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The resume file is `public/Rahul_Bagur_Resume.pdf`.

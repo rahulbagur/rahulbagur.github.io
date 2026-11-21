@@ -296,6 +296,10 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
+.position-line {
+  max-width: 18em;
+}
+
 .hero-split {
   margin-top: 2.1rem;
 }
@@ -407,32 +411,27 @@ a:hover {
   padding-top: 5.5rem;
 }
 
-.about .rail {
-  order: -1;
+.about-copy p + p {
+  margin-top: 1rem;
 }
 
-.portrait {
-  width: 5.4rem;
-  height: 6.7rem;
-  object-fit: cover;
-  object-position: 50% 18%;
-  border: 1px solid var(--ink);
-  margin-bottom: 1rem;
+.about-degree {
+  margin-top: 1.5rem;
 }
 
-.rail h3 {
+.about-degree h3 {
   font-size: 1.05rem;
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.35rem;
 }
 
-.rail p {
+.about-degree p {
   font-family: var(--sans);
   font-size: 0.98rem;
   line-height: 1.4;
 }
 
-.about-copy p + p {
-  margin-top: 1rem;
+.about-degree p + p {
+  margin-top: 0;
 }
 
 .roles,
@@ -634,14 +633,6 @@ a:hover {
     align-items: start;
   }
 
-  .about .rail {
-    order: 2;
-  }
-
-  .about .about-copy {
-    order: 1;
-  }
-
   .skills-grid {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     column-gap: 3.5rem;
@@ -698,5 +689,202 @@ a:hover {
 
   a {
     text-decoration: underline;
+  }
+}
+
+.work-list {
+  border-top: 3px solid var(--pen);
+}
+
+.work-card {
+  display: block;
+  padding: 1.35rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-card h3 {
+  margin-bottom: 0.35rem;
+}
+
+.work-card p {
+  max-width: 48rem;
+}
+
+.work-result {
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.work-card:hover {
+  color: inherit;
+}
+
+.work-card:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.about .skills-grid {
+  margin-top: 2.75rem;
+}
+
+.case-page h1 {
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 16em;
+}
+
+.case-page .lead {
+  margin-top: 1rem;
+}
+
+.case-page h2 {
+  margin-top: 2.25rem;
+}
+
+.case-page ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.case-page li + li {
+  margin-top: 0.45rem;
+}
+
+.back-link {
+  margin-bottom: 1.2rem;
+}
+
+.back-link a {
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.proof-figure {
+  margin: 1.35rem 0 0;
+}
+
+.proof-open {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--ink);
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.proof-open img,
+.proof-dialog img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.proof-slot {
+  min-height: 14rem;
+  border: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.proof-slot-label {
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.proof-figure figcaption,
+.proof-dialog-caption {
+  margin-top: 0.55rem;
+  max-width: var(--measure);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--graphite);
+}
+
+.proof-dialog {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 1rem;
+  width: min(64rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+}
+
+.proof-dialog::backdrop {
+  background: rgba(27, 34, 30, 0.72);
+}
+
+.proof-dialog-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.proof-dialog img {
+  max-height: 72vh;
+  object-fit: contain;
+  background: var(--paper);
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1.5rem 0 0.5rem;
+  border-top: 3px solid var(--pen);
+}
+
+.metric-strip div {
+  padding: 0.85rem 1rem 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.metric-strip dd {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.metric-strip dt {
+  margin-top: 0.35rem;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.callout {
+  margin: 1.75rem 0 0.25rem;
+  padding: 0.9rem 0 1rem;
+  border-top: 3px solid var(--pen);
+  border-bottom: 1px solid var(--line);
+}
+
+.callout p {
+  max-width: 62ch;
+}
+
+@media (min-width: 800px) {
+  .metric-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .proof-gallery-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+    align-items: start;
   }
 }

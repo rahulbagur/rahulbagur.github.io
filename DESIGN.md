@@ -6,7 +6,7 @@ Audience: a hiring manager for GTM Strategy & Ops, RevOps, Growth Ops, or Sales 
 
 ## Plan
 
-The page is a dossier on cool office paper. The first screen is his name, the positioning line, and a short results list set like the top of a campaign report, with a red pen rule where a reviewer would mark the sheet. Later sections keep that margin-and-record structure. One accent, used for the action and for results. No second theme.
+The page is a dossier on cool office paper. The first screen is his name, one positioning line, and links to the work and the resume. Selected work opens a case page each. One accent, used for the action, the rule above the work list, and focus. No second theme.
 
 Rejected, because they are defaults rather than a choice for this brief:
 
@@ -56,26 +56,22 @@ One column width: `min(70rem, 100% - 2rem)`, equal left and right edges.
 ```
 Desktop, first screen
 +------------------------------------------------------+
-| Rahul Bagur                          About Experience Work ... |
+| Rahul Bagur                              Work About Contact |
 | RAHUL BAGUR                                          |
-| GTM and revenue operations.                          |
-|                                                      |
-| I build the outbound, CRM and     7,681   emails... |
-| reporting systems a sales team    69.3%   open rate |
-| runs on.                          26.9%   LinkedIn  |
-| [Download resume]  See the work   $30M+   CoinDCX   |
+| I build the outbound, CRM and reporting              |
+| systems a sales team runs on.                        |
+| [See the work]  Download resume                      |
 +------------------------------------------------------+
 
-About: prose in the left column, small photo and degree on the right.
-Experience: date and city in a narrow left column, role on the right.
-Case studies: problem and what he did side by side, result full width.
-Projects and skills: full width, ruled rows, not cards.
-Contact: email at type size, then the other links. Same paper.
+Selected work: four ruled rows. Each row opens /work/<slug>.
+Case page: context, problem, what I did, results, then a proof gallery.
+About: one column, degree, tools by function, building with AI. No photo.
+Contact: email, resume, LinkedIn, GitHub.
 ```
 
-Mobile keeps the same order. The name, positioning line, Download resume, and the results list sit in the first view. On a tall desktop screen, About can begin at the bottom of that same view. Navigation collapses to a Menu button that opens the section links in normal flow.
+The name, the positioning line, and the two links sit in the first view. Navigation collapses to a Menu button. Case routes are real paths. GitHub Pages gets a copy of `index.html` at `404.html` so those paths resolve.
 
-Radius is 0. Elevation is a 1px line, not a shadow. The red rule appears on the results list only.
+Radius is 0. Elevation is a 1px line, not a shadow. The red rule sits on the work list. Proof images open in a dialog. A missing file stays a labelled slot at `public/proof/`, not a fake chart.
 
 ## Motion
 

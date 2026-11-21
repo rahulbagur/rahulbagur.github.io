@@ -1,12 +1,10 @@
 import { useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#case-studies", label: "Work" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { to: "/#work", label: "Work" },
+  { to: "/#about", label: "About" },
+  { to: "/#contact", label: "Contact" },
 ];
 
 const Header = () => {
@@ -27,14 +25,14 @@ const Header = () => {
   }, [open]);
 
   return (
-    <header className="site-header" data-open={open ? "true" : "false"} id="top">
+    <header className="site-header" data-open={open ? "true" : "false"}>
       <a className="skip" href="#content">
         Skip to content
       </a>
       <div className="wrap bar">
-        <a className="wordmark" href="#top">
+        <Link className="wordmark" to="/" onClick={() => setOpen(false)}>
           Rahul Bagur
-        </a>
+        </Link>
         <button
           ref={buttonRef}
           type="button"
@@ -48,10 +46,10 @@ const Header = () => {
         <nav id={navId} aria-label="Sections">
           <ul className="nav-list">
             {links.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} onClick={() => setOpen(false)}>
+              <li key={link.to}>
+                <Link to={link.to} onClick={() => setOpen(false)}>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

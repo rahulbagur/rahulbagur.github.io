@@ -3,6 +3,8 @@ import type { Proof } from "../content";
 
 const srcFor = (file: string) => `${import.meta.env.BASE_URL}proof/${file}`;
 
+const redaction = "Names, emails and domains redacted.";
+
 const ProofFigure = ({
   item,
   onOpen,
@@ -19,7 +21,9 @@ const ProofFigure = ({
           <p className="proof-slot-label">Proof image not added yet</p>
           <p className="stack">public/proof/{item.file}</p>
         </div>
-        <figcaption>{item.caption}</figcaption>
+        <figcaption>
+          {item.caption} {redaction}
+        </figcaption>
       </figure>
     );
   }
@@ -37,12 +41,20 @@ const ProofFigure = ({
           onError={() => setMissing(true)}
         />
       </button>
-      <figcaption>{item.caption}</figcaption>
+      <figcaption>
+        {item.caption} {redaction}
+      </figcaption>
     </figure>
   );
 };
 
-const ProofGallery = ({ items }: { items: Proof[] }) => {
+const ProofGallery = ({
+  items,
+  compact = false,
+}: {
+  items: Proof[];
+  compact?: boolean;
+}) => {
   const [open, setOpen] = useState<Proof | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -61,7 +73,7 @@ const ProofGallery = ({ items }: { items: Proof[] }) => {
 
   return (
     <>
-      <div className="proof-gallery">
+      <div className={compact ? "proof-gallery proof-gallery-compact" : "proof-gallery"}>
         {items.map((item) => (
           <ProofFigure key={item.file} item={item} onOpen={setOpen} />
         ))}
@@ -89,7 +101,7 @@ const ProofGallery = ({ items }: { items: Proof[] }) => {
             </div>
             <img src={srcFor(open.file)} alt={open.alt} />
             <p id={titleId} className="proof-dialog-caption">
-              {open.caption}
+              {open.caption} {redaction}
             </p>
           </>
         ) : null}

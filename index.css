@@ -836,3 +836,55 @@ a:hover {
   object-fit: contain;
   background: var(--paper);
 }
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1.5rem 0 0.5rem;
+  border-top: 3px solid var(--pen);
+}
+
+.metric-strip div {
+  padding: 0.85rem 1rem 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.metric-strip dd {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.metric-strip dt {
+  margin-top: 0.35rem;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.callout {
+  margin: 1.75rem 0 0.25rem;
+  padding: 0.9rem 0 1rem;
+  border-top: 3px solid var(--pen);
+  border-bottom: 1px solid var(--line);
+}
+
+.callout p {
+  max-width: 62ch;
+}
+
+@media (min-width: 800px) {
+  .metric-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .proof-gallery-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+    align-items: start;
+  }
+}

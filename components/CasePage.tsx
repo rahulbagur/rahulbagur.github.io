@@ -58,12 +58,36 @@ const CasePage = () => {
           ))}
         </ul>
 
-        <h2>Proof</h2>
-        <p>
-          Redacted screenshots and charts. The figures are the ones in the results
-          above.
-        </p>
-        <ProofGallery items={study.proof} />
+        {study.metrics ? (
+          <dl className="metric-strip" aria-label="Hand-counted results, 11 Aug to 20 Nov 2026">
+            {study.metrics.map((metric) => (
+              <div key={metric.label}>
+                <dd>{metric.value}</dd>
+                <dt>{metric.label}</dt>
+              </div>
+            ))}
+          </dl>
+        ) : null}
+
+        {study.proof.length > 0 ? (
+          <>
+            <h2>Proof</h2>
+            <ProofGallery items={study.proof} />
+          </>
+        ) : null}
+
+        {study.callout ? (
+          <aside className="callout">
+            <p>{study.callout}</p>
+          </aside>
+        ) : null}
+
+        {study.shots && study.shots.length > 0 ? (
+          <>
+            <h2>Salesforge screenshots</h2>
+            <ProofGallery items={study.shots} compact />
+          </>
+        ) : null}
       </div>
     </article>
   );

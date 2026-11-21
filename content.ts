@@ -33,6 +33,11 @@ export type Proof = {
   caption: string;
 };
 
+export type Metric = {
+  value: string;
+  label: string;
+};
+
 export type Study = {
   slug: string;
   title: string;
@@ -42,7 +47,10 @@ export type Study = {
   problem: string;
   did: string[];
   results: string[];
+  metrics?: Metric[];
+  callout?: string;
   proof: Proof[];
+  shots?: Proof[];
 };
 
 const proof = (file: string, alt: string, caption: string): Proof => ({
@@ -57,7 +65,7 @@ export const studies: Study[] = [
     title: "Outbound engine from zero",
     summary:
       "Sending, sequencing and a CRM for a legal practice that had none of them.",
-    result: "7,681 emails in 2026",
+    result: "53 replies, 22 positive, 6 meetings, 1 client",
     context:
       "Team Counsel is a nine-person legal consulting practice for startups and scale-ups in Bengaluru. I joined in February 2026 as its first GTM hire and I report to the founder. The outbound runs in India, the US and the UK.",
     problem:
@@ -70,30 +78,65 @@ export const studies: Study[] = [
       "Onboarded and coached an SDR.",
     ],
     results: [
-      "15 Instantly campaigns from March to June, and 24 Salesforge sequences from August to November.",
-      "7,681 emails across those 39 campaigns and sequences.",
-      "In Salesforge, 1,658 of 2,099 contacts were reached, at a 69.3% open rate and a 0.6% bounce.",
+      "Hand-counted from the inbox, 11 Aug to 20 Nov 2026: 53 replies (13 email, at least 40 LinkedIn), 22 positive, 6 meetings booked from cold outbound (4 held), 1 paying client.",
+      "15 Instantly campaigns from March to June, and 24 Salesforge sequences from August to November: 7,681 emails.",
+      "In Salesforge, 1,658 of 2,099 contacts were reached, at a 69.3% open rate and a 0.6% bounce. The tool shows 0 positive and 0 meetings because those were handled outside it.",
     ],
+    metrics: [
+      { value: "53", label: "replies, 11 Aug to 20 Nov" },
+      { value: "22", label: "positive" },
+      { value: "6", label: "meetings booked" },
+      { value: "1", label: "paying client" },
+    ],
+    callout:
+      "Why Salesforge shows 0 positive and 0 meetings: replies were handled and meetings booked outside Salesforge, so nothing was tagged in the tool, and Salesforge also misses LinkedIn replies in the native inbox. Hand-counted from the inbox, 11 Aug to 20 Nov 2026: 53 replies (13 email, at least 40 LinkedIn), 22 positive, 6 meetings booked from cold outbound (4 held), 1 paying client.",
     proof: [
       proof(
         "outbound-domains-mailboxes.png",
-        "Redacted view of the four sending domains and 13 mailboxes.",
-        "Four sending domains and 13 mailboxes."
-      ),
-      proof(
-        "outbound-instantly-salesforge.png",
-        "Redacted view of Instantly campaigns and Salesforge sequences.",
-        "Instantly from March, then Salesforge from August."
-      ),
-      proof(
-        "outbound-zoho-routing.png",
-        "Redacted view of Zoho CRM receiving event and landing-page leads.",
-        "Zoho CRM after the late-October rollout. Event leads and landing-page leads come straight in."
+        "Salesforge mailboxes: 13 in total, all active, 178 emails sent that day. Mailbox names are covered.",
+        "13 mailboxes, all marked active. 178 emails sent that day."
       ),
       proof(
         "outbound-volume.png",
-        "Chart of 7,681 emails across 39 campaigns and sequences in 2026.",
-        "7,681 emails in 2026, across 15 Instantly campaigns and 24 Salesforge sequences."
+        "Bar chart of emails sent in 2026. Instantly by month, January to June, totals 7,623. Salesforge, August to November, is 3,623.",
+        "Emails sent in 2026. Instantly, January to June, by month (7,623). Salesforge, August to November, 3,623."
+      ),
+      proof(
+        "outbound-instantly-salesforge.png",
+        "Two charts. Instantly January to June: 7,623 emails and 53 reply events. Salesforge August to November: 3,623 emails and 16 replies on the email tab.",
+        "Two outbound chapters. Instantly, January to June: 7,623 emails, 53 reply events. Salesforge, August to November: 3,623 emails, 16 email replies."
+      ),
+    ],
+    shots: [
+      proof(
+        "salesforge-sender-profiles.png",
+        "Salesforge sender profiles: 4 profiles, 178 of 390 emails sent today. Profile names are covered.",
+        "4 sender profiles. 178 of 390 emails sent that day."
+      ),
+      proof(
+        "salesforge-sequences-list.png",
+        "Salesforge list of 24 sequences. Incubators India shows an 8.1% reply rate on 37 contacts. ECP India Runway Ending shows 2.4% on 205 contacts. US UK New GC LinkedIn shows 2.4% on 83 contacts. The sender column is covered.",
+        "24 sequences. Incubators India, 8.1% reply on 37 contacts. ECP India Runway Ending, 2.4% on 205. US UK New GC LinkedIn, 2.4% on 83."
+      ),
+      proof(
+        "salesforge-all-time-email-funnel.png",
+        "Salesforge all-time email analytics. 3,623 emails sent, 730 opened (69.3%), 16 replies (1.5%), 21 bounced (0.6%). Positive rate 0 and meetings booked 0. Contacted 1,658 of 2,099.",
+        "All-time email: 3,623 sent, 69.3% open, 16 replies (1.5%), 21 bounced. Positive 0, meetings 0. Contacted 1,658 of 2,099."
+      ),
+      proof(
+        "salesforge-all-time-linkedin-funnel.png",
+        "Salesforge all-time LinkedIn analytics. 778 connections sent, 209 accepted (26.9%), 13 replies (1.7%), 0 messages sent after accept. Positive rate 0 and meetings booked 0.",
+        "All-time LinkedIn: 778 requests, 209 accepted (26.9%), 13 replies. Positive 0, meetings 0."
+      ),
+      proof(
+        "salesforge-analytics-6-20-nov.png",
+        "Salesforge analytics for 6 to 20 November 2026. 500 contacted and 20 replies (4%). Email: 573 sent, 61.2% open, 8 replies (2.4%), 6 bounced. Positive 0, meetings 0.",
+        "6 to 20 Nov 2026: 500 contacted, 20 replies (4%). Email open rate 61.2% on 573 sends. Positive 0, meetings 0."
+      ),
+      proof(
+        "salesforge-early-craas-ny.png",
+        "Early CRaaS NY in Salesforge, 11 Aug to 20 Nov 2026. 54 contacted, 1 reply (1.9%). 212 emails sent, 88.8% open, 0 bounced. Positive 0, meetings 0.",
+        "Early CRaaS NY, 11 Aug to 20 Nov: 54 contacted, 1 reply (1.9%). 212 emails, 88.8% open. Positive 0, meetings 0."
       ),
     ],
   },
@@ -115,7 +158,10 @@ export const studies: Study[] = [
       "US UK New GC, LinkedIn: version B was accepted at 22.0%. Version A was accepted at 9.5%.",
       "778 LinkedIn requests, 209 accepted, 26.9%.",
       "Incubators were the best segment, at an 8.1% reply rate.",
+      "Hand-counted, the ECP offer had a 60% positive rate among replies: 12 of 20. On LinkedIn, about 21% of people who received a message replied.",
     ],
+    callout:
+      "Salesforge shows 0 positive and 0 meetings because replies and meetings were handled outside the tool, and it misses LinkedIn replies in the native inbox. Hand-counted, 11 Aug to 20 Nov 2026: 53 replies, 22 positive, 6 meetings booked (4 held), 1 paying client.",
     proof: [
       proof(
         "ab-ecp-india-replies.png",
@@ -131,6 +177,28 @@ export const studies: Study[] = [
         "linkedin-acceptance-778.png",
         "Chart of 778 LinkedIn requests and 209 acceptances, a 26.9% acceptance rate.",
         "LinkedIn overall: 209 of 778 requests accepted, 26.9%."
+      ),
+    ],
+    shots: [
+      proof(
+        "salesforge-ecp-india-runway-ending.png",
+        "ECP India Runway Ending in Salesforge, 5 Oct to 20 Nov 2026. 205 contacted, 5 replies (2.4%). 661 emails, 75.1% unique open, 1 bounce. Positive rate 0 and meetings booked 0.",
+        "ECP India Runway Ending, 5 Oct to 20 Nov: 205 contacted, 5 replies (2.4%). 661 emails, 75.1% open. Positive 0, meetings 0 in the tool."
+      ),
+      proof(
+        "salesforge-us-uk-new-gc-linkedin.png",
+        "US UK New GC LinkedIn in Salesforge, 7 Sep to 20 Nov 2026. 83 contacted, 2 replies (2.4%). 83 connections sent and 0 messages sent in the tool. Positive 0, meetings 0.",
+        "US UK New GC LinkedIn, 7 Sep to 20 Nov: 83 connections, 2 replies (2.4%). Positive 0, meetings 0 in the tool."
+      ),
+      proof(
+        "salesforge-incubators-india.png",
+        "Incubators India in Salesforge, 19 Oct to 20 Nov 2026. 37 contacted, 3 replies (8.1%). 37 emails, 17 opened (45.9%), 2 bounced. Positive 0, meetings 0.",
+        "Incubators India, 19 Oct to 20 Nov: 37 contacted, 3 replies (8.1%). 45.9% open. Positive 0, meetings 0."
+      ),
+      proof(
+        "salesforge-linkedin-previous-fgc-ecp-craas.png",
+        "LinkedIn Previous FGC ECP CRaaS in Salesforge, 14 Oct to 20 Nov 2026. 624 connections sent, 11 replies (1.8%). 699 in the list, 624 contacted. Positive 0, meetings 0.",
+        "LinkedIn Previous FGC ECP CRaaS, 14 Oct to 20 Nov: 624 connections, 11 replies (1.8%). Positive 0, meetings 0."
       ),
     ],
   },
@@ -150,13 +218,16 @@ export const studies: Study[] = [
       "Rewrote the sequences into short, trigger-based emails.",
     ],
     results: [
-      "The offer was moved to seed-funded companies. The reply and acceptance tests from the same year are in the multichannel case.",
+      "April Instantly subject-line tests: 0 replies, on 86 emails and then 128.",
+      "Seeded retarget, 22 Apr to 11 May: 430 emails, and 0 replies recorded in Instantly.",
+      "Hand-counted, the ECP offer had a 60% positive rate among replies: 12 of 20. Those replies were not tagged in the sending tool.",
+      "The later Salesforge sequence, ECP India Runway Ending, is a different run: 661 emails and 5 replies (2.4% of 205 contacts).",
     ],
     proof: [
       proof(
         "retarget-seed-funded.png",
-        "Redacted view of the offer after it was moved to seed-funded companies.",
-        "The offer after the move to seed-funded companies."
+        "Chart of the ECP offer. Failed subject lines in April: 86 and 128 emails, 0 replies. Seeded retarget, 22 Apr to 11 May: 430 emails, 0 replies. Later Salesforge Runway Ending, 5 Oct to 20 Nov: 661 emails and 5 replies (2.4% of 205).",
+        "ECP offer. April subject-line tests and the seeded retarget recorded 0 replies in Instantly. Runway Ending, a later sequence, shows 5 replies (2.4% of 205)."
       ),
     ],
   },
@@ -181,38 +252,7 @@ export const studies: Study[] = [
       "The team gets a fresh account and news brief every day, without the manual research. The dashboard stays on an internal site.",
       "The other tools are private builds. There is no public demo.",
     ],
-    proof: [
-      proof(
-        "tools-gtm-dashboard.png",
-        "Redacted view of the daily GTM intelligence dashboard.",
-        "The daily GTM brief. It stays on an internal site."
-      ),
-      proof(
-        "tools-funding-alerts.png",
-        "Redacted view of the funding-alert automation used for account selection.",
-        "Funding alerts that feed account selection."
-      ),
-      proof(
-        "tools-chatbotider.png",
-        "Redacted view of ChatbotIDer, the desktop audit for chatbot and support tools.",
-        "ChatbotIDer. Built with AI coding tools; Python, Playwright."
-      ),
-      proof(
-        "tools-competitor-finder.png",
-        "Redacted view of Competitor User Finder and a deduped lead export.",
-        "Competitor User Finder. Built with AI coding tools; Python, Playwright."
-      ),
-      proof(
-        "tools-simulator.png",
-        "Redacted view of the paper-trading research simulator. No live orders.",
-        "Paper-trading research simulator. Built with AI coding tools; React, TensorFlow.js. A test blocks any order placement."
-      ),
-      proof(
-        "tools-linkedin-outreach.png",
-        "Redacted view of the local LinkedIn outreach tool tracking lead status.",
-        "Local LinkedIn outreach tool. Built with AI coding tools; Node.js, Puppeteer."
-      ),
-    ],
+    proof: [],
   },
 ];
 

@@ -407,32 +407,27 @@ a:hover {
   padding-top: 5.5rem;
 }
 
-.about .rail {
-  order: -1;
+.about-copy p + p {
+  margin-top: 1rem;
 }
 
-.portrait {
-  width: 5.4rem;
-  height: 6.7rem;
-  object-fit: cover;
-  object-position: 50% 18%;
-  border: 1px solid var(--ink);
-  margin-bottom: 1rem;
+.about-degree {
+  margin-top: 1.5rem;
 }
 
-.rail h3 {
+.about-degree h3 {
   font-size: 1.05rem;
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.35rem;
 }
 
-.rail p {
+.about-degree p {
   font-family: var(--sans);
   font-size: 0.98rem;
   line-height: 1.4;
 }
 
-.about-copy p + p {
-  margin-top: 1rem;
+.about-degree p + p {
+  margin-top: 0;
 }
 
 .roles,
@@ -632,14 +627,6 @@ a:hover {
     grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
     column-gap: 3.5rem;
     align-items: start;
-  }
-
-  .about .rail {
-    order: 2;
-  }
-
-  .about .about-copy {
-    order: 1;
   }
 
   .skills-grid {

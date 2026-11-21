@@ -66,7 +66,7 @@ Desktop, first screen
 | [Download resume]  See the work   $30M+   CoinDCX   |
 +------------------------------------------------------+
 
-About: prose in the left column, small photo and degree on the right.
+About: one column of prose, with the degree under it.
 Experience: date and city in a narrow left column, role on the right.
 Case studies: problem and what he did side by side, result full width.
 Projects and skills: full width, ruled rows, not cards.

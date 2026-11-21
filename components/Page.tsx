@@ -62,40 +62,31 @@ const Page = () => {
       <section className="block about" aria-labelledby="about">
         <div className="wrap">
           <h2 id="about">About</h2>
-          <div className="split">
-            <div className="about-copy">
-              <p>
-                I joined Team Counsel in February 2026 as its first GTM hire. There was no
-                CRM, no sending setup and no outbound process. Over the year I stood up
-                Instantly, then Apollo, Salesforge and Zoho CRM, ran campaigns across India,
-                the US and the UK, and coached our SDR.
-              </p>
-              <p>
-                Before that I spent two years in sales and partnerships at CoinDCX, using
-                Databricks and MoEngage on the Business Partner vertical and Prime funnels,
-                and running demos and outbound at Pickcel.
-              </p>
-              <p>
-                I write Python and TypeScript when a process needs a tool that is not already
-                in place.
-              </p>
-              <p>
-                I am looking for GTM Strategy &amp; Operations, RevOps, Growth Ops or Sales Ops
-                roles.
-              </p>
-            </div>
-            <aside className="rail">
-              <img
-                className="portrait"
-                src={`${import.meta.env.BASE_URL}headshot.jpg`}
-                alt="Portrait of Rahul Bagur"
-                width={402}
-                height={520}
-              />
+          <div className="about-copy">
+            <p>
+              I joined Team Counsel in February 2026 as its first GTM hire. There was no
+              CRM, no sending setup and no outbound process. Over the year I stood up
+              Instantly, then Apollo, Salesforge and Zoho CRM, ran campaigns across India,
+              the US and the UK, and coached our SDR.
+            </p>
+            <p>
+              Before that I spent two years in sales and partnerships at CoinDCX, using
+              Databricks and MoEngage on the Business Partner vertical and Prime funnels,
+              and running demos and outbound at Pickcel.
+            </p>
+            <p>
+              When a tool doesn't exist, I build it with AI coding tools and work through
+              the bugs until I understand how it works.
+            </p>
+            <p>
+              I am looking for GTM Strategy &amp; Operations, RevOps, Growth Ops or Sales Ops
+              roles.
+            </p>
+            <div className="about-degree">
               <h3>Education</h3>
               <p>B.Tech, Aerospace Engineering</p>
               <p>Jain University, 2022</p>
-            </aside>
+            </div>
           </div>
         </div>
       </section>
@@ -159,7 +150,7 @@ const Page = () => {
         <div className="wrap">
           <h2 id="projects">Projects</h2>
           <p className="intro">
-            Tools I built for the work. The repositories are private.
+            Tools I built with AI coding tools. The repositories are private.
           </p>
           {projects.map((project) => (
             <article className="project" key={project.title}>
@@ -174,9 +165,7 @@ const Page = () => {
       <section className="block" aria-labelledby="skills">
         <div className="wrap">
           <h2 id="skills">Skills and tools</h2>
-          <p className="intro">
-            Grouped by the work. I pick up a new stack when the job needs one.
-          </p>
+          <p className="intro">Grouped by the work.</p>
           <div className="skills-grid">
             <div>
               <h3>GTM and RevOps</h3>
@@ -207,7 +196,7 @@ const Page = () => {
               </table>
             </div>
             <div className="technical">
-              <h3>Technical</h3>
+              <h3>Building with AI</h3>
               <p>{technicalSkills}</p>
             </div>
           </div>

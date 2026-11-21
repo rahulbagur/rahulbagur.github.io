@@ -128,23 +128,22 @@ export const cases = [
 export const projects = [
   {
     title: "Crypto futures research and paper-trading simulator",
-    stack:
-      "React, TypeScript, TensorFlow.js (LSTM, CNN), Random Forest, XGBoost, Vitest",
+    stack: "built with AI coding tools; React, TensorFlow.js",
     body: "Models vote through a validation-weighted ensemble on Binance Futures market data, with walk-forward testing, fee, slippage and funding modelling, and hard risk limits (2x max leverage, 3% daily stop, 10% drawdown halt). Paper trading only. A test blocks any order-placement code.",
   },
   {
     title: "ChatbotIDer",
-    stack: "Python, PySide6, Playwright",
+    stack: "built with AI coding tools; Python, Playwright",
     body: "Desktop app that audits websites for chatbot and support tools (Intercom, Drift, HubSpot, Zoho SalesIQ, Zendesk and others), classifies them by industry and capability, and exports clean CSVs.",
   },
   {
     title: "Competitor User Finder",
-    stack: "Python, PySide6, Playwright, SQLite",
+    stack: "built with AI coding tools; Python, Playwright",
     body: "Finds companies running a competitor's product through search operators and public code signatures, dedupes domains and exports a lead list.",
   },
   {
     title: "LinkedIn outreach automation",
-    stack: "TypeScript, Node.js, Express, Puppeteer, React",
+    stack: "built with AI coding tools; Node.js, Puppeteer",
     body: "Local tool that sends connection requests and messages through the user's own browser session and tracks lead status.",
   },
 ];
@@ -168,4 +167,4 @@ export const toolGroups = [
 ];
 
 export const technicalSkills =
-  "Python, SQL, TypeScript, React, Node.js, Playwright, TensorFlow.js, Claude, Gemini CLI.";
+  "I ship working tools by directing AI coding agents (Claude, Gemini CLI), debug with them, and learn the concepts underneath; SQL for data pulls.";

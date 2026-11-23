@@ -65,17 +65,14 @@ export function Hero() {
   return (
     <section ref={scope} className="mx-auto grid max-w-[1120px] items-start gap-8 px-4 pt-8 pb-6 sm:px-6 lg:grid-cols-12 lg:items-center lg:py-24">
       <div className="lg:col-span-7">
-        <p className="mb-4 inline-flex rounded-md bg-muted px-2 py-1 font-display text-[13px] leading-[18px]">
-          Open to GTM, RevOps, Growth Ops and Sales Ops roles · Bengaluru
-        </p>
         <h1 data-reveal className="font-display text-[38px] leading-[42px] font-medium text-pretty md:text-[56px] md:leading-[60px]">
           Rahul Bagur
         </h1>
         <p className="mt-4 max-w-[68ch] text-[21px] leading-[30px]">
-          I build the outbound, CRM and reporting systems a sales team runs on, and I count what they actually produce.
+          I set up the outbound, the CRM and the reporting a sales team runs on. Then I go back and count what actually came back.
         </p>
-        <p className="mt-4 max-w-[68ch] text-[17px] leading-[28px] text-muted-foreground">
-          First GTM hire at Team Counsel, a legal consulting practice for startups. From August to November 2026 my outbound booked 6 meetings and won a paying client. Before that, sales and partnerships at CoinDCX and Pickcel.
+        <p className="mt-4 max-w-[68ch] text-[17px] leading-[28px]">
+          I'm the first GTM hire at Team Counsel, a legal practice for startups in Bengaluru. Before that I did sales and partnerships at CoinDCX and Pickcel. I'm looking at GTM Strategy and Ops, RevOps, Growth Ops and Sales Ops roles.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild>

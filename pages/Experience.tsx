@@ -3,16 +3,6 @@ import { Button } from "@/components/ui/button";
 import { ExperienceTimeline } from "@/components/blocks/ExperienceTimeline";
 import { resumeHref } from "@/content";
 
-const skills = [
-  "outbound sequencing",
-  "A/B testing",
-  "ICP and list building",
-  "CRM design and hygiene",
-  "funnel reporting and MIS",
-  "SDR enablement",
-  "partner programmes",
-];
-
 const toolRows = [
   ["Sequencing", "Instantly, Salesforge"],
   ["CRM", "Zoho CRM, Zoho SalesIQ"],
@@ -39,14 +29,11 @@ export default function Experience() {
       <div className="mt-10">
         <ExperienceTimeline full />
       </div>
-      <h2 className="mt-16 font-display text-[28px] leading-[34px] font-medium">Skills</h2>
-      <h3 className="mt-6 font-display text-[19px] font-medium">GTM and RevOps</h3>
-      <ul className="mt-2 list-disc pl-5 text-[17px] leading-[28px]">
-        {skills.map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
-      <h2 className="mt-12 font-display text-[28px] leading-[34px] font-medium">Tools by function</h2>
+      <h2 className="mt-16 font-display text-[28px] leading-[34px] font-medium">What I do</h2>
+      <p className="mt-3 max-w-[68ch] text-[17px] leading-[28px]">
+        Outbound sequencing, A/B testing, ICP and list building, CRM design and hygiene, funnel reporting and MIS, SDR enablement, and partner programmes.
+      </p>
+      <h2 className="mt-12 font-display text-[28px] leading-[34px] font-medium">Tools</h2>
       <table className="mt-4 w-full max-w-3xl text-left text-[17px] leading-[28px]">
         <tbody>
           {toolRows.map(([fn, tools]) => (
@@ -59,7 +46,7 @@ export default function Experience() {
       </table>
       <h2 className="mt-12 font-display text-[28px] leading-[34px] font-medium">Building with AI</h2>
       <p className="mt-3 max-w-[68ch] text-[17px] leading-[28px]">
-        I ship working tools by directing AI coding agents (Claude, Gemini CLI), debug with them, and learn the concepts underneath. SQL for data pulls.
+        When I need a tool, I build it by directing AI coding agents, mostly Claude and Gemini CLI. I debug with them and I learn the concepts underneath, including SQL for data pulls.
       </p>
       <h2 className="mt-12 font-display text-[28px] leading-[34px] font-medium">Education</h2>
       <p className="mt-3 text-[17px] leading-[28px]">B.Tech, Aerospace Engineering, Jain University, 2022.</p>

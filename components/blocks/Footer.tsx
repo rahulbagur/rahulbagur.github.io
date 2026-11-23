@@ -12,7 +12,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="mx-auto max-w-[1120px] px-4 py-10 text-center sm:px-6">
-      <p className="font-display text-[17px] font-medium">Rahul Bagur · Bengaluru</p>
+      <p className="font-display text-[17px] font-medium">Rahul Bagur, Bengaluru</p>
       <nav className="mt-4 flex flex-wrap justify-center gap-4" aria-label="Footer">
         {links.map((link) => (
           <Link key={link.to} to={link.to} className="font-display text-[15px]">

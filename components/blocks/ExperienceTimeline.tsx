@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
 import { roles } from "@/content";
 import { useTimelineDraw } from "@/components/motion/useTimelineDraw";
 
@@ -16,28 +15,17 @@ export function ExperienceTimeline({ full = false }: { full?: boolean }) {
           <div className="absolute top-1 left-px size-3 -translate-x-1/2 rounded-full border border-primary bg-card" />
           <p className="text-[13px] leading-[18px] text-muted-foreground">
             {role.period}
-            {role.place ? ` · ${role.place}` : ""}
+            {role.place ? `, ${role.place}` : ""}
           </p>
           <h3 className="mt-1 font-display text-[19px] leading-[26px] font-medium md:text-[21px] md:leading-7">
             {role.company}
           </h3>
           <p className="font-display text-[15px]">{role.title}</p>
-          {role.context ? <p className="mt-2 max-w-[68ch] text-[15px] leading-[22px]">{role.context}</p> : null}
-          {role.owned ? <p className="mt-1 max-w-[68ch] text-[15px] leading-[22px]">Owned: {role.owned}</p> : null}
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-[15px] leading-[22px]">
-            {(full ? role.bullets : role.bullets.slice(0, 2)).map((bullet) => (
-              <li key={bullet}>{bullet}</li>
+          <div className="mt-3 max-w-[68ch] space-y-3 text-[15px] leading-[22px]">
+            {(full ? role.paragraphs : role.paragraphs.slice(0, 1)).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </ul>
-          {role.badges ? (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {role.badges.map((badge) => (
-                <Badge key={badge} variant="outline">
-                  {badge}
-                </Badge>
-              ))}
-            </div>
-          ) : null}
+          </div>
         </article>
       ))}
       {full ? null : (

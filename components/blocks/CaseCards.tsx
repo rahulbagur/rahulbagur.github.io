@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { cases } from "@/content";
-import { Badge } from "@/components/ui/badge";
 import { Picture } from "./Picture";
 
 export function CaseCards({ items = cases }: { items?: typeof cases }) {
@@ -19,16 +18,10 @@ export function CaseCards({ items = cases }: { items?: typeof cases }) {
                 </div>
               )}
               <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
-                  ))}
-                </div>
-                <h3 className="mt-3 font-display text-[19px] leading-[26px] font-medium text-pretty md:text-[21px] md:leading-7">
+                <h3 className="font-display text-[19px] leading-[26px] font-medium text-pretty md:text-[21px] md:leading-7">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[15px] leading-[22px] text-muted-foreground">{item.line}</p>
-                <p className="mt-3 font-display text-[15px]">Read the case</p>
+                <p className="mt-2 text-[15px] leading-[22px]">{item.line}</p>
               </div>
             </Link>
           </article>

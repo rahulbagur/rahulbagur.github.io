@@ -18,7 +18,7 @@ export default function WorkIndex() {
     <article className="mx-auto max-w-[1120px] px-4 py-16 sm:px-6 md:py-24">
       <h1 className="font-display text-[38px] leading-[42px] font-medium md:text-[56px] md:leading-[60px]">Work</h1>
       <p className="mt-3 max-w-[68ch] text-[17px] leading-[28px]">
-        Six pieces of work, each with the numbers and the screenshots behind them.
+        Six pieces of work. The numbers and the screenshots are on each page.
       </p>
       <div className="mt-6 flex flex-wrap gap-2">
         {filters.map((item) => (

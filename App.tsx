@@ -1,48 +1,50 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import Header from "./components/Header";
-import HomePage from "./components/HomePage";
-import CasePage from "./components/CasePage";
-import { profiles } from "./content";
+import { Footer } from "@/components/blocks/Footer";
+import { Nav } from "@/components/blocks/Nav";
+import Home from "@/pages/Home";
 
-const Scroll = () => {
+const Experience = lazy(() => import("@/pages/Experience"));
+const WorkIndex = lazy(() => import("@/pages/WorkIndex"));
+const CasePage = lazy(() => import("@/pages/CasePage"));
+const About = lazy(() => import("@/pages/About"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+
+function Scroll() {
   const { pathname, hash } = useLocation();
-
   useEffect(() => {
     if (hash) {
-      const target = document.querySelector(hash);
-      if (target) {
-        target.scrollIntoView();
-        return;
-      }
+      document.querySelector(hash)?.scrollIntoView();
+      return;
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);
-
   return null;
-};
+}
 
-const App = () => {
+export default function App() {
   return (
     <BrowserRouter>
       <Scroll />
-      <Header />
+      <a href="#content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-card focus:px-3 focus:py-2">
+        Skip to content
+      </a>
+      <Nav />
       <main id="content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/work/:slug" element={<CasePage />} />
-        </Routes>
+        <Suspense fallback={<p className="px-6 py-16">Loading.</p>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/work" element={<WorkIndex />} />
+            <Route path="/work/:slug" element={<CasePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
-      <footer className="site-footer">
-        <div className="wrap footer-line">
-          <p>Rahul Bagur, Bengaluru</p>
-          <p>
-            <a href={`mailto:${profiles.email}`}>{profiles.email}</a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </BrowserRouter>
   );
-};
-
-export default App;
+}
